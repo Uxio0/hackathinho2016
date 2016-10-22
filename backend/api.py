@@ -2,7 +2,7 @@
 import json
 from flask import Flask, Response
 from bson import json_util
-from electricidad import *
+from electricity import *
 
 app = Flask(__name__)
 
