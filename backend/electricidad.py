@@ -10,7 +10,7 @@ iso_codes = open('iso_codes.txt').read().splitlines()
 cities_with_codes = []
 for iso_code in iso_codes:
     code, city, community = iso_code.split('\t')
-    cities_with_codes.append({'code': code.strip(),
+    cities_with_codes.append({'iso': code.strip(),
                               'city': city.strip().lower(),
                               'community': community.strip()})
 
@@ -25,6 +25,7 @@ def query_ree(indicator):
     print(url)
     response = requests.get(url, headers=headers)
     return response.json()
+
 
 def get_headers(token):
     headers = dict()
@@ -62,7 +63,7 @@ def get_and_store_province_code(geo_id, geo_name):
                 'geo_name': geo_name}
         for city_with_codes in cities_with_codes:
             if geo_name.strip().lower() in city_with_codes['city']:
-                city['iso'] = city_with_codes['code']
+                city['iso'] = city_with_codes['iso']
                 break
         hack_db.cities.insert(city)
     return city
@@ -70,20 +71,27 @@ def get_and_store_province_code(geo_id, geo_name):
 
 def get_info_and_cities(indicator):
     result = query_ree(indicator)
-    for city in result['indicator']['geos']:
-        get_and_store_province_code(city['geo_id'], city['geo_name'])
+
+    cities = {city['geo_id']: get_and_store_province_code(city['geo_id'],
+                                                          city['geo_name'])
+              for city in result['indicator']['geos']}
     values = result['indicator']['values']
     if values:
         collection = hack_db['indicator-' + str(indicator)]
         if collection.find_one(values[0]):
             print('Repeated values for indicator: ' + str(indicator))
+        for value in values:
+            print(value['geo_id'])
+            value['iso'] = cities[value['geo_id']]['iso']
         collection.insert_many(values)
+    return values
 
 
-generacion_medida_solar = 10205
-generacion_medida_hidraulica = 10035
-generacion_medida_eolica = 10037
+if __name__ == '__main__':
+    generacion_medida_solar = 10205
+    generacion_medida_hidraulica = 10035
+    generacion_medida_eolica = 10037
 
-get_info_and_cities(generacion_medida_solar)
-get_info_and_cities(generacion_medida_hidraulica)
-get_info_and_cities(generacion_medida_eolica)
+    get_info_and_cities(generacion_medida_solar)
+    get_info_and_cities(generacion_medida_hidraulica)
+    get_info_and_cities(generacion_medida_eolica)
