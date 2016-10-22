@@ -3,6 +3,7 @@ import datetime
 import time
 import requests
 from pymongo import MongoClient
+from bson import json_util
 mongo = MongoClient()
 hack_db = mongo.hackathinho
 
@@ -81,10 +82,19 @@ def get_info_and_cities(indicator):
         if collection.find_one(values[0]):
             print('Repeated values for indicator: ' + str(indicator))
         for value in values:
-            print(value['geo_id'])
             value['iso'] = cities[value['geo_id']]['iso']
         collection.insert_many(values)
     return values
+
+
+def get_from_mongo(indicator):
+    collection = hack_db['indicator-' + str(indicator)]
+    return [value for value in collection.find({})]
+
+
+def populate_all(indicators):
+    for indicator in indicators:
+        get_info_and_cities(indicator)
 
 
 if __name__ == '__main__':
