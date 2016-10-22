@@ -7,9 +7,9 @@ from electricidad import *
 app = Flask(__name__)
 
 energy_types = {
-    'solar': 10205,
+    'eolic': 10037,
     'hidraulic': 10035,
-    'eolic': 10037
+    'solar': 10205
 }
 
 populate_all(energy_types.values())
@@ -21,15 +21,27 @@ def index():
 
 
 @app.route('/api/energy/<energy_type>', methods=['GET'])
-def get_task(energy_type):
+def get_energy(energy_type):
     if energy_type not in energy_types:
         abort(404)
-    result = get_info_and_cities(energy_types[energy_type])
+    result = get_from_mongo(energy_types[energy_type])
     #return jsonify(result)
     return Response(json.dumps(result,
                                default=json_util.default,
                                ensure_ascii=False),
                     mimetype='application/json')
+
+
+@app.route('/api/energy/<energy_type>/total', methods=['GET'])
+def get_energy_sum(energy_type):
+    if energy_type not in energy_types:
+        abort(404)
+    result = get_sum_from_mongo(energy_types[energy_type])
+    return Response(json.dumps(result,
+                               default=json_util.default,
+                               ensure_ascii=False),
+                    mimetype='application/json')
+
 
 if __name__ == '__main__':
     #app.run(debug=True)

@@ -79,17 +79,32 @@ def get_info_and_cities(indicator):
     values = result['indicator']['values']
     if values:
         collection = hack_db['indicator-' + str(indicator)]
-        if collection.find_one(values[0]):
-            print('Repeated values for indicator: ' + str(indicator))
         for value in values:
             value['iso'] = cities[value['geo_id']]['iso']
-        collection.insert_many(values)
+        if collection.find_one(values[0]):
+            print('Repeated values for indicator: ' + str(indicator))
+        else:
+            collection.insert_many(values)
     return values
 
 
 def get_from_mongo(indicator):
     collection = hack_db['indicator-' + str(indicator)]
     return [value for value in collection.find({})]
+
+
+def get_sum_from_mongo(indicator):
+    collection = hack_db['indicator-' + str(indicator)]
+    pipeline = [
+        {
+            "$group": {
+                "_id": None,
+                "totalAmount": {"$sum": "$value"},
+                "count": {"$sum": 1}
+            }
+        }
+    ]
+    return [value for value in collection.aggregate(pipeline)]
 
 
 def populate_all(indicators):
