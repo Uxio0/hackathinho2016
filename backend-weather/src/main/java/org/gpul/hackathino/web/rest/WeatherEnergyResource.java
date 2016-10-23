@@ -2,13 +2,14 @@ package org.gpul.hackathino.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import org.gpul.hackathino.service.WeatherEnergyService;
+import org.gpul.hackathino.service.dto.WeatherEnergyDTO;
 import org.gpul.hackathino.web.rest.util.HeaderUtil;
 import org.gpul.hackathino.web.rest.util.PaginationUtil;
-import org.gpul.hackathino.service.dto.WeatherEnergyDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -19,10 +20,8 @@ import javax.inject.Inject;
 import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 /**
  * REST controller for managing WeatherEnergy.
@@ -93,7 +92,7 @@ public class WeatherEnergyResource {
         method = RequestMethod.GET,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public ResponseEntity<List<WeatherEnergyDTO>> getAllWeatherEnergies(Pageable pageable)
+    public ResponseEntity<List<WeatherEnergyDTO>> getAllWeatherEnergies(@PageableDefault(sort = { "createdDateTime" }, value = 50) Pageable pageable)
         throws URISyntaxException {
         log.debug("REST request to get a page of WeatherEnergies");
         Page<WeatherEnergyDTO> page = weatherEnergyService.findAll(pageable);
