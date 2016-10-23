@@ -39,13 +39,37 @@ public class WeatherEnergy implements Serializable {
     @Column(name = "solar", nullable = false)
     private Double solar;
 
+    @Column(name = "min_temp")
+    private Double minTemp;
+
+    @Column(name = "max_temp")
+    private Double maxTemp;
+
+    @Column(name = "temp")
+    private Double temp;
+
+    @Column(name = "sunset")
+    private Integer sunset;
+
+    @Column(name = "sunrise")
+    private Integer sunrise;
+
     @NotNull
     @Column(name = "hidraulic", nullable = false)
     private Double hidraulic;
 
+    @Column(name = "rain")
+    private Double rain;
+
     @NotNull
     @Column(name = "eolic", nullable = false)
     private Double eolic;
+
+    @Column(name = "wind_speed")
+    private Double windSpeed;
+
+    @Column(name = "clouds")
+    private Double clouds;
 
     @NotNull
     @Column(name = "created_date_time", nullable = false)
@@ -124,6 +148,71 @@ public class WeatherEnergy implements Serializable {
         this.solar = solar;
     }
 
+    public Double getMinTemp() {
+        return minTemp;
+    }
+
+    public WeatherEnergy minTemp(Double minTemp) {
+        this.minTemp = minTemp;
+        return this;
+    }
+
+    public void setMinTemp(Double minTemp) {
+        this.minTemp = minTemp;
+    }
+
+    public Double getMaxTemp() {
+        return maxTemp;
+    }
+
+    public WeatherEnergy maxTemp(Double maxTemp) {
+        this.maxTemp = maxTemp;
+        return this;
+    }
+
+    public void setMaxTemp(Double maxTemp) {
+        this.maxTemp = maxTemp;
+    }
+
+    public Double getTemp() {
+        return temp;
+    }
+
+    public WeatherEnergy temp(Double temp) {
+        this.temp = temp;
+        return this;
+    }
+
+    public void setTemp(Double temp) {
+        this.temp = temp;
+    }
+
+    public Integer getSunset() {
+        return sunset;
+    }
+
+    public WeatherEnergy sunset(Integer sunset) {
+        this.sunset = sunset;
+        return this;
+    }
+
+    public void setSunset(Integer sunset) {
+        this.sunset = sunset;
+    }
+
+    public Integer getSunrise() {
+        return sunrise;
+    }
+
+    public WeatherEnergy sunrise(Integer sunrise) {
+        this.sunrise = sunrise;
+        return this;
+    }
+
+    public void setSunrise(Integer sunrise) {
+        this.sunrise = sunrise;
+    }
+
     public Double getHidraulic() {
         return hidraulic;
     }
@@ -137,6 +226,19 @@ public class WeatherEnergy implements Serializable {
         this.hidraulic = hidraulic;
     }
 
+    public Double getRain() {
+        return rain;
+    }
+
+    public WeatherEnergy rain(Double rain) {
+        this.rain = rain;
+        return this;
+    }
+
+    public void setRain(Double rain) {
+        this.rain = rain;
+    }
+
     public Double getEolic() {
         return eolic;
     }
@@ -148,6 +250,32 @@ public class WeatherEnergy implements Serializable {
 
     public void setEolic(Double eolic) {
         this.eolic = eolic;
+    }
+
+    public Double getWindSpeed() {
+        return windSpeed;
+    }
+
+    public WeatherEnergy windSpeed(Double windSpeed) {
+        this.windSpeed = windSpeed;
+        return this;
+    }
+
+    public void setWindSpeed(Double windSpeed) {
+        this.windSpeed = windSpeed;
+    }
+
+    public Double getClouds() {
+        return clouds;
+    }
+
+    public WeatherEnergy clouds(Double clouds) {
+        this.clouds = clouds;
+        return this;
+    }
+
+    public void setClouds(Double clouds) {
+        this.clouds = clouds;
     }
 
     public LocalDate getCreatedDateTime() {
@@ -192,8 +320,16 @@ public class WeatherEnergy implements Serializable {
             ", lat='" + lat + "'" +
             ", lon='" + lon + "'" +
             ", solar='" + solar + "'" +
+            ", minTemp='" + minTemp + "'" +
+            ", maxTemp='" + maxTemp + "'" +
+            ", temp='" + temp + "'" +
+            ", sunset='" + sunset + "'" +
+            ", sunrise='" + sunrise + "'" +
             ", hidraulic='" + hidraulic + "'" +
+            ", rain='" + rain + "'" +
             ", eolic='" + eolic + "'" +
+            ", windSpeed='" + windSpeed + "'" +
+            ", clouds='" + clouds + "'" +
             ", createdDateTime='" + createdDateTime + "'" +
             '}';
     }

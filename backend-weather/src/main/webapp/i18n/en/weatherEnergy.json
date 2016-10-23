@@ -21,8 +21,16 @@
             "lat": "Lat",
             "lon": "Lon",
             "solar": "Solar",
+            "minTemp": "Min Temp",
+            "maxTemp": "Max Temp",
+            "temp": "Temp",
+            "sunset": "Sunset",
+            "sunrise": "Sunrise",
             "hidraulic": "Hidraulic",
+            "rain": "Rain",
             "eolic": "Eolic",
+            "windSpeed": "Wind Speed",
+            "clouds": "Clouds",
             "createdDateTime": "Created Date Time"
         }
     }

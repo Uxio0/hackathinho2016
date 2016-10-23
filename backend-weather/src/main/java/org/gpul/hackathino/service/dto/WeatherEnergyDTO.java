@@ -24,11 +24,27 @@ public class WeatherEnergyDTO implements Serializable {
     @NotNull
     private Double solar;
 
+    private Double minTemp;
+
+    private Double maxTemp;
+
+    private Double temp;
+
+    private Integer sunset;
+
+    private Integer sunrise;
+
     @NotNull
     private Double hidraulic;
 
+    private Double rain;
+
     @NotNull
     private Double eolic;
+
+    private Double windSpeed;
+
+    private Double clouds;
 
     @NotNull
     private LocalDate createdDateTime;
@@ -76,6 +92,41 @@ public class WeatherEnergyDTO implements Serializable {
     public void setSolar(Double solar) {
         this.solar = solar;
     }
+    public Double getMinTemp() {
+        return minTemp;
+    }
+
+    public void setMinTemp(Double minTemp) {
+        this.minTemp = minTemp;
+    }
+    public Double getMaxTemp() {
+        return maxTemp;
+    }
+
+    public void setMaxTemp(Double maxTemp) {
+        this.maxTemp = maxTemp;
+    }
+    public Double getTemp() {
+        return temp;
+    }
+
+    public void setTemp(Double temp) {
+        this.temp = temp;
+    }
+    public Integer getSunset() {
+        return sunset;
+    }
+
+    public void setSunset(Integer sunset) {
+        this.sunset = sunset;
+    }
+    public Integer getSunrise() {
+        return sunrise;
+    }
+
+    public void setSunrise(Integer sunrise) {
+        this.sunrise = sunrise;
+    }
     public Double getHidraulic() {
         return hidraulic;
     }
@@ -83,12 +134,33 @@ public class WeatherEnergyDTO implements Serializable {
     public void setHidraulic(Double hidraulic) {
         this.hidraulic = hidraulic;
     }
+    public Double getRain() {
+        return rain;
+    }
+
+    public void setRain(Double rain) {
+        this.rain = rain;
+    }
     public Double getEolic() {
         return eolic;
     }
 
     public void setEolic(Double eolic) {
         this.eolic = eolic;
+    }
+    public Double getWindSpeed() {
+        return windSpeed;
+    }
+
+    public void setWindSpeed(Double windSpeed) {
+        this.windSpeed = windSpeed;
+    }
+    public Double getClouds() {
+        return clouds;
+    }
+
+    public void setClouds(Double clouds) {
+        this.clouds = clouds;
     }
     public LocalDate getCreatedDateTime() {
         return createdDateTime;
@@ -128,8 +200,16 @@ public class WeatherEnergyDTO implements Serializable {
             ", lat='" + lat + "'" +
             ", lon='" + lon + "'" +
             ", solar='" + solar + "'" +
+            ", minTemp='" + minTemp + "'" +
+            ", maxTemp='" + maxTemp + "'" +
+            ", temp='" + temp + "'" +
+            ", sunset='" + sunset + "'" +
+            ", sunrise='" + sunrise + "'" +
             ", hidraulic='" + hidraulic + "'" +
+            ", rain='" + rain + "'" +
             ", eolic='" + eolic + "'" +
+            ", windSpeed='" + windSpeed + "'" +
+            ", clouds='" + clouds + "'" +
             ", createdDateTime='" + createdDateTime + "'" +
             '}';
     }

@@ -58,11 +58,35 @@ public class WeatherEnergyResourceIntTest {
     private static final Double DEFAULT_SOLAR = 1D;
     private static final Double UPDATED_SOLAR = 2D;
 
+    private static final Double DEFAULT_MIN_TEMP = 1D;
+    private static final Double UPDATED_MIN_TEMP = 2D;
+
+    private static final Double DEFAULT_MAX_TEMP = 1D;
+    private static final Double UPDATED_MAX_TEMP = 2D;
+
+    private static final Double DEFAULT_TEMP = 1D;
+    private static final Double UPDATED_TEMP = 2D;
+
+    private static final Integer DEFAULT_SUNSET = 1;
+    private static final Integer UPDATED_SUNSET = 2;
+
+    private static final Integer DEFAULT_SUNRISE = 1;
+    private static final Integer UPDATED_SUNRISE = 2;
+
     private static final Double DEFAULT_HIDRAULIC = 1D;
     private static final Double UPDATED_HIDRAULIC = 2D;
 
+    private static final Double DEFAULT_RAIN = 1D;
+    private static final Double UPDATED_RAIN = 2D;
+
     private static final Double DEFAULT_EOLIC = 1D;
     private static final Double UPDATED_EOLIC = 2D;
+
+    private static final Double DEFAULT_WIND_SPEED = 1D;
+    private static final Double UPDATED_WIND_SPEED = 2D;
+
+    private static final Double DEFAULT_CLOUDS = 1D;
+    private static final Double UPDATED_CLOUDS = 2D;
 
     private static final LocalDate DEFAULT_CREATED_DATE_TIME = LocalDate.ofEpochDay(0L);
     private static final LocalDate UPDATED_CREATED_DATE_TIME = LocalDate.now(ZoneId.systemDefault());
@@ -112,8 +136,16 @@ public class WeatherEnergyResourceIntTest {
                 .lat(DEFAULT_LAT)
                 .lon(DEFAULT_LON)
                 .solar(DEFAULT_SOLAR)
+                .minTemp(DEFAULT_MIN_TEMP)
+                .maxTemp(DEFAULT_MAX_TEMP)
+                .temp(DEFAULT_TEMP)
+                .sunset(DEFAULT_SUNSET)
+                .sunrise(DEFAULT_SUNRISE)
                 .hidraulic(DEFAULT_HIDRAULIC)
+                .rain(DEFAULT_RAIN)
                 .eolic(DEFAULT_EOLIC)
+                .windSpeed(DEFAULT_WIND_SPEED)
+                .clouds(DEFAULT_CLOUDS)
                 .createdDateTime(DEFAULT_CREATED_DATE_TIME);
         return weatherEnergy;
     }
@@ -145,8 +177,16 @@ public class WeatherEnergyResourceIntTest {
         assertThat(testWeatherEnergy.getLat()).isEqualTo(DEFAULT_LAT);
         assertThat(testWeatherEnergy.getLon()).isEqualTo(DEFAULT_LON);
         assertThat(testWeatherEnergy.getSolar()).isEqualTo(DEFAULT_SOLAR);
+        assertThat(testWeatherEnergy.getMinTemp()).isEqualTo(DEFAULT_MIN_TEMP);
+        assertThat(testWeatherEnergy.getMaxTemp()).isEqualTo(DEFAULT_MAX_TEMP);
+        assertThat(testWeatherEnergy.getTemp()).isEqualTo(DEFAULT_TEMP);
+        assertThat(testWeatherEnergy.getSunset()).isEqualTo(DEFAULT_SUNSET);
+        assertThat(testWeatherEnergy.getSunrise()).isEqualTo(DEFAULT_SUNRISE);
         assertThat(testWeatherEnergy.getHidraulic()).isEqualTo(DEFAULT_HIDRAULIC);
+        assertThat(testWeatherEnergy.getRain()).isEqualTo(DEFAULT_RAIN);
         assertThat(testWeatherEnergy.getEolic()).isEqualTo(DEFAULT_EOLIC);
+        assertThat(testWeatherEnergy.getWindSpeed()).isEqualTo(DEFAULT_WIND_SPEED);
+        assertThat(testWeatherEnergy.getClouds()).isEqualTo(DEFAULT_CLOUDS);
         assertThat(testWeatherEnergy.getCreatedDateTime()).isEqualTo(DEFAULT_CREATED_DATE_TIME);
     }
 
@@ -242,8 +282,16 @@ public class WeatherEnergyResourceIntTest {
                 .andExpect(jsonPath("$.[*].lat").value(hasItem(DEFAULT_LAT.doubleValue())))
                 .andExpect(jsonPath("$.[*].lon").value(hasItem(DEFAULT_LON.doubleValue())))
                 .andExpect(jsonPath("$.[*].solar").value(hasItem(DEFAULT_SOLAR.doubleValue())))
+                .andExpect(jsonPath("$.[*].minTemp").value(hasItem(DEFAULT_MIN_TEMP.doubleValue())))
+                .andExpect(jsonPath("$.[*].maxTemp").value(hasItem(DEFAULT_MAX_TEMP.doubleValue())))
+                .andExpect(jsonPath("$.[*].temp").value(hasItem(DEFAULT_TEMP.doubleValue())))
+                .andExpect(jsonPath("$.[*].sunset").value(hasItem(DEFAULT_SUNSET)))
+                .andExpect(jsonPath("$.[*].sunrise").value(hasItem(DEFAULT_SUNRISE)))
                 .andExpect(jsonPath("$.[*].hidraulic").value(hasItem(DEFAULT_HIDRAULIC.doubleValue())))
+                .andExpect(jsonPath("$.[*].rain").value(hasItem(DEFAULT_RAIN.doubleValue())))
                 .andExpect(jsonPath("$.[*].eolic").value(hasItem(DEFAULT_EOLIC.doubleValue())))
+                .andExpect(jsonPath("$.[*].windSpeed").value(hasItem(DEFAULT_WIND_SPEED.doubleValue())))
+                .andExpect(jsonPath("$.[*].clouds").value(hasItem(DEFAULT_CLOUDS.doubleValue())))
                 .andExpect(jsonPath("$.[*].createdDateTime").value(hasItem(DEFAULT_CREATED_DATE_TIME.toString())));
     }
 
@@ -263,8 +311,16 @@ public class WeatherEnergyResourceIntTest {
             .andExpect(jsonPath("$.lat").value(DEFAULT_LAT.doubleValue()))
             .andExpect(jsonPath("$.lon").value(DEFAULT_LON.doubleValue()))
             .andExpect(jsonPath("$.solar").value(DEFAULT_SOLAR.doubleValue()))
+            .andExpect(jsonPath("$.minTemp").value(DEFAULT_MIN_TEMP.doubleValue()))
+            .andExpect(jsonPath("$.maxTemp").value(DEFAULT_MAX_TEMP.doubleValue()))
+            .andExpect(jsonPath("$.temp").value(DEFAULT_TEMP.doubleValue()))
+            .andExpect(jsonPath("$.sunset").value(DEFAULT_SUNSET))
+            .andExpect(jsonPath("$.sunrise").value(DEFAULT_SUNRISE))
             .andExpect(jsonPath("$.hidraulic").value(DEFAULT_HIDRAULIC.doubleValue()))
+            .andExpect(jsonPath("$.rain").value(DEFAULT_RAIN.doubleValue()))
             .andExpect(jsonPath("$.eolic").value(DEFAULT_EOLIC.doubleValue()))
+            .andExpect(jsonPath("$.windSpeed").value(DEFAULT_WIND_SPEED.doubleValue()))
+            .andExpect(jsonPath("$.clouds").value(DEFAULT_CLOUDS.doubleValue()))
             .andExpect(jsonPath("$.createdDateTime").value(DEFAULT_CREATED_DATE_TIME.toString()));
     }
 
@@ -291,8 +347,16 @@ public class WeatherEnergyResourceIntTest {
                 .lat(UPDATED_LAT)
                 .lon(UPDATED_LON)
                 .solar(UPDATED_SOLAR)
+                .minTemp(UPDATED_MIN_TEMP)
+                .maxTemp(UPDATED_MAX_TEMP)
+                .temp(UPDATED_TEMP)
+                .sunset(UPDATED_SUNSET)
+                .sunrise(UPDATED_SUNRISE)
                 .hidraulic(UPDATED_HIDRAULIC)
+                .rain(UPDATED_RAIN)
                 .eolic(UPDATED_EOLIC)
+                .windSpeed(UPDATED_WIND_SPEED)
+                .clouds(UPDATED_CLOUDS)
                 .createdDateTime(UPDATED_CREATED_DATE_TIME);
         WeatherEnergyDTO weatherEnergyDTO = weatherEnergyMapper.weatherEnergyToWeatherEnergyDTO(updatedWeatherEnergy);
 
@@ -310,8 +374,16 @@ public class WeatherEnergyResourceIntTest {
         assertThat(testWeatherEnergy.getLat()).isEqualTo(UPDATED_LAT);
         assertThat(testWeatherEnergy.getLon()).isEqualTo(UPDATED_LON);
         assertThat(testWeatherEnergy.getSolar()).isEqualTo(UPDATED_SOLAR);
+        assertThat(testWeatherEnergy.getMinTemp()).isEqualTo(UPDATED_MIN_TEMP);
+        assertThat(testWeatherEnergy.getMaxTemp()).isEqualTo(UPDATED_MAX_TEMP);
+        assertThat(testWeatherEnergy.getTemp()).isEqualTo(UPDATED_TEMP);
+        assertThat(testWeatherEnergy.getSunset()).isEqualTo(UPDATED_SUNSET);
+        assertThat(testWeatherEnergy.getSunrise()).isEqualTo(UPDATED_SUNRISE);
         assertThat(testWeatherEnergy.getHidraulic()).isEqualTo(UPDATED_HIDRAULIC);
+        assertThat(testWeatherEnergy.getRain()).isEqualTo(UPDATED_RAIN);
         assertThat(testWeatherEnergy.getEolic()).isEqualTo(UPDATED_EOLIC);
+        assertThat(testWeatherEnergy.getWindSpeed()).isEqualTo(UPDATED_WIND_SPEED);
+        assertThat(testWeatherEnergy.getClouds()).isEqualTo(UPDATED_CLOUDS);
         assertThat(testWeatherEnergy.getCreatedDateTime()).isEqualTo(UPDATED_CREATED_DATE_TIME);
     }
 

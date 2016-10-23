@@ -26,6 +26,26 @@
             ]
         },
         {
+            "fieldName": "minTemp",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "maxTemp",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "temp",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "sunset",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "sunrise",
+            "fieldType": "Integer"
+        },
+        {
             "fieldName": "hidraulic",
             "fieldType": "Double",
             "fieldValidateRules": [
@@ -33,11 +53,23 @@
             ]
         },
         {
+            "fieldName": "rain",
+            "fieldType": "Double"
+        },
+        {
             "fieldName": "eolic",
             "fieldType": "Double",
             "fieldValidateRules": [
                 "required"
             ]
+        },
+        {
+            "fieldName": "windSpeed",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "clouds",
+            "fieldType": "Double"
         },
         {
             "fieldName": "createdDateTime",

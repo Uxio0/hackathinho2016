@@ -2,12 +2,20 @@
 
 entity WeatherEnergy {	
 	name String,
-isoCode String,
+    isoCode String,
     lat Double,
     lon Double,
 	solar Double required,
+    minTemp Double,
+    maxTemp Double,
+    temp Double,
+    sunset Integer,
+    sunrise Integer,
     hidraulic Double required,
+    rain Double,
     eolic Double required,
+    windSpeed Double,
+    clouds Double,
     createdDateTime LocalDate required  
 }
 
