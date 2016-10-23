@@ -24,8 +24,7 @@ import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import java.io.IOException;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * Service Implementation for managing WeatherEnergy.
@@ -42,13 +41,118 @@ public class WeatherEnergyServiceImpl implements WeatherEnergyService{
     @Inject
     private WeatherEnergyMapper weatherEnergyMapper;
 
-
     private OpenWeatherClient openWeatherClient;
+
+    private static final Map<String, String> provincesList;
+    static
+    {
+        provincesList = new HashMap<>();
+        provincesList.put("ES-C", "A Coruña");
+        provincesList.put("ES-VI", "Álava");
+        provincesList.put("ES-AB", "Albacete");
+        provincesList.put("ES-A", "Alicante");
+        provincesList.put("ES-AL", "Almería");
+        provincesList.put("ES-O", "Asturias");
+        provincesList.put("ES-AV", "Ávila");
+        provincesList.put("ES-BA", "Badajoz");
+        provincesList.put("ES-PM", "Balears");
+        provincesList.put("ES-B", "Barcelona");
+        provincesList.put("ES-BI", "Bizkaia");
+        provincesList.put("ES-BU", "Burgos");
+        provincesList.put("ES-CC", "Cáceres");
+        provincesList.put("ES-CA", "Cádiz");
+        provincesList.put("ES-S", "Cantabria");
+        provincesList.put("ES-CS", "Castellón");
+        provincesList.put("ES-CR", "Ciudad Real");
+        provincesList.put("ES-CO", "Córdoba");
+        provincesList.put("ES-CU", "Cuenca");
+        provincesList.put("ES-SS", "Gipuzkoa");
+        provincesList.put("ES-GI", "Girona");
+        provincesList.put("ES-GR", "Granada");
+        provincesList.put("ES-GU", "Guadalajara");
+        provincesList.put("ES-H", "Huelva");
+        provincesList.put("ES-HU", "Huesca");
+        provincesList.put("ES-J", "Jaén");
+        provincesList.put("ES-LO", "La Rioja");
+        provincesList.put("ES-GC", "Las Palmas");
+        provincesList.put("ES-LE", "León");
+        provincesList.put("ES-L", "Lleida");
+        provincesList.put("ES-LU", "Lugo");
+        provincesList.put("ES-M", "Madrid");
+        provincesList.put("ES-MA", "Málaga");
+        provincesList.put("ES-MU", "Murcia");
+        provincesList.put("ES-NA", "Navarra");
+        provincesList.put("ES-OR", "Ourense");
+        provincesList.put("ES-P", "Palencia");
+        provincesList.put("ES-PO", "Pontevedra");
+        provincesList.put("ES-SA", "Salamanca");
+        provincesList.put("ES-TF", "Santa Cruz de Tenerife");
+        provincesList.put("ES-SG", "Segovia");
+        provincesList.put("ES-SE", "Sevilla");
+        provincesList.put("ES-SO", "Soria");
+        provincesList.put("ES-T", "Tarragona");
+        provincesList.put("ES-TE", "Teruel");
+        provincesList.put("ES-TO", "Toledo");
+        provincesList.put("ES-V", "Valencia");
+        provincesList.put("ES-VA", "Valladolid");
+        provincesList.put("ES-ZA", "Zamora");
+        provincesList.put("ES-Z", "Zaragoza");
+    }
 
     @PostConstruct
     private void init(){
         openWeatherClient = new OpenWeatherClient(new OkHttpClient());
+    }
 
+    /**
+     * Donwload by pronvices list
+     */
+    @Scheduled(fixedDelay=86400000)
+    public void downloadByProvinces(){
+
+        List<WeatherEnergy> list = new ArrayList<>();
+
+        for(Map.Entry<String, String> entry : provincesList.entrySet()) {
+            String isoCode = entry.getKey();
+            String province = entry.getValue();
+
+            try {
+                Weather weather = openWeatherClient.getWeatherByProvince(province);
+
+                WeatherEnergy weatherEnergy = new WeatherEnergy();
+                weatherEnergy.setName(province);
+                weatherEnergy.setIsoCode(isoCode);
+                weatherEnergy.setCreatedDateTime(LocalDate.now());
+                weatherEnergy.setLat(weather.getLat());
+                weatherEnergy.setLon(weather.getLon());
+
+                weatherEnergy.setRain(weather.getRain3H());
+                weatherEnergy.setClouds(new Double(weather.getCloudsAll()));
+                weatherEnergy.setMaxTemp(weather.getMainTempMax());
+                weatherEnergy.setMinTemp(weather.getMainTempMin());
+                weatherEnergy.setTemp(weather.getMainTemp());
+                weatherEnergy.setSunset(weather.getSysSunsetAsTimestamp());
+                weatherEnergy.setSunrise(weather.getSysSunriseAsTimestamp());
+                weatherEnergy.setWindSpeed(weather.getWindSpeed());
+
+
+                weatherEnergy.setHidraulic(weather.getRain3H() * 8 * Factor.HIDRAULIC.getValue());
+
+                weatherEnergy.setEolic(weather.getWindSpeed() * Factor.EOLIC.getValue());
+
+                weatherEnergy.setSolar(
+                        new Double(weather.getSysSunsetAsTimestamp()-weather.getSysSunriseAsTimestamp())
+                                * weather.getMainTemp()
+                                * new Double(1-(weather.getCloudsAll()/100))
+                                * Factor.SOLAR.getValue());
+
+                list.add(weatherEnergy);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        weatherEnergyRepository.save(list);
     }
 
     /**
@@ -56,7 +160,7 @@ public class WeatherEnergyServiceImpl implements WeatherEnergyService{
      * @throws JSONException
      * @throws IOException
      */
-    @Scheduled(fixedDelay=86400000)
+    //@Scheduled(fixedDelay=86400000)
     public void download() throws JSONException, IOException {
 
         List<WeatherEnergy> list = new ArrayList<>();

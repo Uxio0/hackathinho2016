@@ -35,6 +35,19 @@ public class ApiWeatherTest {
 
     public static void main(String[] args) throws IOException, JSONException {
 
+
+        String[] provinces = new String[]{"A Coruña", "Vitoria", "Albacete", "Alicante", "Almeria",
+                "Asturias", "Avila", "Badajoz",
+                "Palma de Mallorca", "Barcelona", "Bilbao", "Burgos", "Caceres", "Cadiz",
+                "Cantabria", "Castellon", "Ciudad Real", "Cordoba", "Cuenca", "San Sebastian",
+                "Girona", "Granada", "Guadalajara", "Huelva", "Huesca", "Jaen", "La Rioja",
+                "Las Palmas", "Leon", "Lleida", "Lugo", "Madrid", "Malaga",
+                "Murcia", "Navarra", "Ourense", "Palencia",
+                "Pontevedra", "Salamanca", "Santa Cruz de Tenerife", "Segovia", "Sevilla",
+                "Soria", "Tarragona", "Teruel", "Toledo", "Valencia", "Valladolid", "Zamora", "Zaragoza"};
+
+        System.out.println(provinces.length);
+
         openWeatherClient = new OpenWeatherClient(new OkHttpClient());
 
         List<WeatherEnergy> list = new ArrayList<>();
@@ -95,7 +108,7 @@ public class ApiWeatherTest {
 
 
 
-        String[] provinces = new String[]{"A Coruña", "Álava", "Albacete", "Alicante", "Almeria", "Asturias", "Avila", "Badajoz", "Palma de Mallorca", "Barcelona", "Vizcaya", "Burgos", "Caceres", "Cadiz", "Cantabria", "Castellon", "Ciudad Real", "Cordoba", "Cuenca", "Guipuzcoa", "Girona", "Granada", "Guadalajara", "Huelva", "Huesca", "Jaen", "La Rioja", "Las Palmas", "León", "Lleida", "Lugo", "Madrid", "Malaga", "Murcia", "Navarra", "Ourense", "Palencia", "Pontevedra", "Salamanca", "Santa Cruz de Tenerife", "Segovia", "Sevilla", "Soria", "Tarragona", "Teruel", "Toledo", "Valencia", "Valladolid", "Zamora", "Zaragoza"};
+        provinces = new String[]{"A Coruña", "Álava", "Albacete", "Alicante", "Almeria", "Asturias", "Avila", "Badajoz", "Palma de Mallorca", "Barcelona", "Vizcaya", "Burgos", "Caceres", "Cadiz", "Cantabria", "Castellon", "Ciudad Real", "Cordoba", "Cuenca", "Guipuzcoa", "Girona", "Granada", "Guadalajara", "Huelva", "Huesca", "Jaen", "La Rioja", "Las Palmas", "León", "Lleida", "Lugo", "Madrid", "Malaga", "Murcia", "Navarra", "Ourense", "Palencia", "Pontevedra", "Salamanca", "Santa Cruz de Tenerife", "Segovia", "Sevilla", "Soria", "Tarragona", "Teruel", "Toledo", "Valencia", "Valladolid", "Zamora", "Zaragoza"};
         Arrays.asList(provinces).forEach(
                 province -> {
                     try {
