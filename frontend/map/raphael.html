@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>Ejemplo Raphaeljs</title>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.6/raphael.min.js"></script>
+  </head>
+
+  <body>
+    <h1>Ejemplo Raphaeljs</h1>
+    <hr />
+    <div id="lienzo">
+    </div>
+    <script>
+      var default_attributes = {
+            fill: '#abcabc',
+            stroke: '#000000',
+            'stroke-width': 4,
+        };
+      var rjs = Raphael('lienzo', 600, 400);
+
+      var p1 = rjs.path('m 95.725713,145.10504 0,-11.088 9.359997,0 0,-9.36 39.456,0 0,9.36 9.504,0 0,19.008 9.504,0 0,39.456 -9.504,0 0,9.36 -20.304,0 0,-10.8 9.216,0 0,-36.576 -9.36,0 0,-9.36 -7.92,0 0,94.896 -9.504,0 0,9.36 -11.088,0 0,-104.256 -9.359997,0');
+      p1.attr(default_attributes);
+      p1.hover(function() {
+        this.animate({
+      fill: '#00bbff'
+    }, 100);
+    p1[0].style.cursor = 'crosshair';
+      },
+      function() {
+        this.animate({
+      fill: default_attributes.fill
+    }, 100);
+      }).click(function() {
+        alert("click en la P");
+      });;
+      var p2 = rjs.path('m 172.59086,293.9256 0,-94.896 -9.36,0 0,-11.088 9.36,0 0,-9.36 39.456,0 0,9.36 9.504,0 0,19.008 9.504,0 0,29.952 -9.36,0 0,8.064 9.36,0 0,39.456 -9.504,0 0,9.504 -9.504,0 0,9.36 -29.952,0 0,-9.36 -9.504,0 m 20.592,-11.088 17.28,0 0,-36.432 -9.216,0 0,-10.944 9.216,0 0,-27.072 -9.36,0 0,-9.36 -7.92,0 0,83.808');
+      p2.attr(default_attributes);
+      p2.hover(function() {
+        this.animate({
+      fill: '#ffbb00'
+    }, 100);
+    p2[0].style.cursor = 'wait';
+      },
+      function() {
+        this.animate({
+      fill: default_attributes.fill
+    }, 100);
+      }).click(function() {
+        alert("click en la B");
+      });;
+
+    </script>
+  </body>
+</html>

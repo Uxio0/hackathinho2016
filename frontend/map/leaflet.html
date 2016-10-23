@@ -1,0 +1,22 @@
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Mi primer mapa Leaflet</title>
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css">
+    <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+</head>
+<body>
+<h1>Ejemplo de mapa con la librería javascript Leaflet</h1>
+
+<div id="map" style="width: 900px; height: 600px;"> </div>
+
+<script>
+    var map = new L.map('map');
+    map.setView([40.4168,-3.7035],10);
+    // Añadimos una capa de mapas OpenStreetMap
+    L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+</script>
+</body>
+</html>

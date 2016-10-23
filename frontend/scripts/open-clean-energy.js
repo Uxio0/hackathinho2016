@@ -1,159 +1,266 @@
 $(function () {
 
-  // Energy server
+  var that = this
+  
+  // Weather service
+  var weatherService = "http://localhost:8080/api/weather"
+  
+  // Current weather
+  
+  var weather = []
+  
+  $.ajax({
+     url: weatherService,
+     dataType: 'jsonp',
+     success: function (json) {
+      console.debug('weather')
+      that.weather = data
+      that.weather.sort(function (a, b) { a.iso < b.iso })
+      that.configWeatherChart()
+     },
+     error: function () {
+      console.error('No weather metrics available')
+     }
+  })
+  
+  var weatherOptions = {
+    title: {
+      text: 'Current weather'
+    },
+    xAxis: {
+      categories: [],
+      min: 0,
+      max:9
+    },
+    scrollbar: {
+      enabled: true
+    },
+    series: [
+      {
+        type: 'column',
+        name: 'Wind speed (m/s)',
+        color: 'Grey',
+        data: []
+      },
+      {
+        type: 'column',
+        name: 'Rainfall (l/m2 3h)',
+        color: 'Blue',
+        data: []
+      },
+      {
+        type: 'column',
+        name: 'Min. temp (ºC)',
+        color: 'Yellow',
+        data: []
+      },
+      {
+        type: 'column',
+        name: 'Temp (ºC)',
+        color: 'Orange',
+        data: []
+      },
+      {
+        type: 'column',
+        name: 'Max. temp (ºC)',
+        color: 'Red',
+        data: []
+      },
+      {
+        type: 'column',
+        name: 'Sun hours',
+        color: 'Green',
+        data: []
+      },
+      {
+        type: 'column',
+        name: 'Clouds (%)',
+        color: 'Cyan',
+        data: []
+      }
+    ]
+  }
+  
+  // Chart config
+  
+  var configWeatherChart = function () {
+    
+    // Provinces
+    var provinces = weather.map(province => province.iso.substring(3))
+    weatherOptions.xAxis.categories = provinces
 
-  var energy = "http://83.36.17.177:5000/api/energy/"
+    // Wind speed
+    weatherOptions.series[0].data = weather.map(province => province.windSpeed)
+    // Rainfall
+    weatherOptions.series[1].data = weather.map(province => province.rain)
+    // Min temp
+    weatherOptions.series[2].data = weather.map(province => province.minTemp)
+    // Temp
+    weatherOptions.series[3].data = weather.map(province => province.temp)
+    // Max temp
+    weatherOptions.series[4].data = weather.map(province => province.maxTemp)
+    // Sun hours
+    weatherOptions.series[5].data = weather.map(province => province.sunset - province.sunrise)
+    // Clouds
+    weatherOptions.series[6].data = weather.map(province => province.clouds)
+    
+    $('weatherChart').highcharts(weatherOptions);
+  }
+  
+  // Init
+  
+  configWeatherChart()
+  
+  /***************************************************************************/
+  
+  // Energy service
+
+  var energyService = "http://79.157.159.179:5000/api/energy/"
 
   // Energy production
 
   var eolicEnergy = []
   var hydraulicEnergy = []
   var solarEnergy = []
-
-  var that = this
   
   $.ajax({
-     url: energy + 'eolic',
+     url: energyService + 'eolic',
      dataType: 'jsonp',
-     success: function(json) {
-      that.eolicEnergy = data
-      that.configChart()
+     success: function (json) {
       console.debug('eolic')
+      that.eolicEnergy = data
+      that.eolicEnergy.sort(function (a, b) { a.iso < b.iso })
+      that.configEnergyChart()
      },
-     error:function(){
+     error: function () {
       console.error('No eolic energy metrics available')
-     }      
+     }
   })
   
   $.ajax({
-     url: energy + 'hydraulic',
+     url: energyService + 'hydraulic',
      dataType: 'jsonp',
-     success: function(json) {
-      that.eolicEnergy = data
-      that.configChart()
+     success: function (json) {
       console.debug('hydraulic')
+      that.hydraulicEnergy = data
+      that.hydraulicEnergy.sort(function (a, b) { a.iso < b.iso })
+      that.configEnergyChart()
      },
-     error:function(){
+     error: function () {
       console.error('No hydraulic energy metrics available')
-     }      
+     }
   })
   
   $.ajax({
-     url: energy + 'solar',
+     url: energyService + 'solar',
      dataType: 'jsonp',
-     success: function(json) {
-      that.eolicEnergy = data
-      that.configChart()
+     success: function (json) {
       console.debug('solar')
+      that.solarEnergy = data
+      that.solarEnergy.sort(function (a, b) { a.iso < b.iso })
+      that.configEnergyChart()
      },
-     error:function(){
+     error: function () {
       console.error('No solar energy metrics available')
-     }      
+     }
   })
-
-  // Data
-
-  eolicEnergy.sort(function (a, b) { a.iso < b.iso })
-  hydraulicEnergy.sort(function (a, b) { a.iso < b.iso })
-  solarEnergy.sort(function (a, b) { a.iso < b.iso })
-
-  var provinces = eolicEnergy.map(province => province.iso)
 
   // Chart
 
-  var options = {
+  var energyOptions = {
     title: {
-        text: 'Energy production'
+      text: 'Energy production'
     },
     xAxis: {
-        categories: [],
-        min: 0,
-        max:9
+      categories: [],
+      min: 0,
+      max:9
     },
     scrollbar: {
-        enabled: true
+      enabled: true
     },
     series: [
       {
-          type: 'column',// Energy server
-          name: 'Eolic',
-          color: 'Grey',
-          data: []
+        type: 'column',
+        name: 'Eolic (MW)',
+        color: 'Grey',
+        data: []
       },
       {
-          type: 'column',
-          name: 'Hydraulic',
-          color: 'Blue',
-          data: []
+        type: 'column',
+        name: 'Hydraulic (MW)',
+        color: 'Blue',
+        data: []
       },
       {
-          type: 'column',
-          name: 'Solar',
-          color: 'Orange',
-          data: []
+        type: 'column',
+        name: 'Solar (MW)',
+        color: 'Orange',
+        data: []
       },
       {
-          type: 'spline',
-          name: 'Est. solar',
-          color: 'Orange',
-          data: [],
-          marker: {
-        lineWidth: 2,
-        lineColor: Highcharts.getOptions().colors[3],
-        fillColor: 'White'
-          }
+        type: 'spline',
+        name: 'Est. solar (MW)',
+        color: 'Orange',
+        data: [],
+        marker: {
+          lineWidth: 2,
+          lineColor: Highcharts.getenergyOptions().colors[3],
+          fillColor: 'White'
+        }
       },
       {
-          type: 'spline',
-          name: 'Est. hydraulic',
-          color: 'Blue',
-          data: [],
-          marker: {
-        lineWidth: 2,
-        lineColor: Highcharts.getOptions().colors[3],
-        fillColor: 'White'
-          }
+        type: 'spline',
+        name: 'Est. hydraulic (MW)',
+        color: 'Blue',
+        data: [],
+        marker: {
+          lineWidth: 2,
+          lineColor: Highcharts.getenergyOptions().colors[3],
+          fillColor: 'White'
+        }
       },
       {
-          type: 'spline',
-          name: 'Est. eolic',
-          color: 'Grey',
-          data: [],
-          marker: {
-        lineWidth: 2,
-        lineColor: Highcharts.getOptions().colors[3],
-        fillColor: 'White'
-          }
+        type: 'spline',
+        name: 'Est. eolic (MW)',
+        color: 'Grey',
+        data: [],
+        marker: {
+          lineWidth: 2,
+          lineColor: Highcharts.getenergyOptions().colors[3],
+          fillColor: 'White'
+        }
       }
     ]
   }
 
   // Chart config
 
-  var configChart = function () {
+  var configEnergyChart = function () {
     
     // Provinces
-    options.xAxis.categories = provinces
+    var provinces = eolicEnergy.map(province => province.iso.substring(3))
+    energyOptions.xAxis.categories = provinces
 
     // Produced eolic energy
-    options.series[0].data = eolicEnergy.map(province => province.value)
+    energyOptions.series[0].data = eolicEnergy.map(province => province.value)
     // Produced hydraulic energy
-    options.series[1].data = hydraulicEnergy.map(province => province.value)
+    energyOptions.series[1].data = hydraulicEnergy.map(province => province.value)
     // Produced solar energy
-    options.series[2].data = solarEnergy.map(province => province.value)
+    energyOptions.series[2].data = solarEnergy.map(province => province.value)
 
     // Estimated eolic energy
-    options.series[3].data = eolicEnergy.map(province => province.value * Math.random() * 2)
+    energyOptions.series[3].data = eolicEnergy.map(province => province.value * Math.random() * 2)
     // Estimated hydraulic energy
-    options.series[4].data = hydraulicEnergy.map(province => province.value * Math.random() * 2)
+    energyOptions.series[4].data = hydraulicEnergy.map(province => province.value * Math.random() * 2)
     // Estimated solar energy
-    options.series[5].data = solarEnergy.map(province => province.value * Math.random() * 2)
+    energyOptions.series[5].data = solarEnergy.map(province => province.value * Math.random() * 2)
     
-    $('#container').highcharts(options);
+    $('#energyChart').highcharts(energyOptions);
   }
 
   // Init
   
-  configChart()
+  configEnergyChart()
   
 });
