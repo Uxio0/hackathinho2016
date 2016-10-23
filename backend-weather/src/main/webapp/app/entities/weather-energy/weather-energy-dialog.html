@@ -1,0 +1,114 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myWeatherEnergyLabel" data-translate="weatheropendataApp.weatherEnergy.home.createOrEditLabel">Create or edit a Weather Energy</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.weatherEnergy.id">
+            <label for="id" data-translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.weatherEnergy.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="weatheropendataApp.weatherEnergy.name" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                    ng-model="vm.weatherEnergy.name"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="weatheropendataApp.weatherEnergy.isoCode" for="field_isoCode">Iso Code</label>
+            <input type="text" class="form-control" name="isoCode" id="field_isoCode"
+                    ng-model="vm.weatherEnergy.isoCode"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="weatheropendataApp.weatherEnergy.lat" for="field_lat">Lat</label>
+            <input type="number" class="form-control" name="lat" id="field_lat"
+                    ng-model="vm.weatherEnergy.lat"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="weatheropendataApp.weatherEnergy.lon" for="field_lon">Lon</label>
+            <input type="number" class="form-control" name="lon" id="field_lon"
+                    ng-model="vm.weatherEnergy.lon"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="weatheropendataApp.weatherEnergy.solar" for="field_solar">Solar</label>
+            <input type="number" class="form-control" name="solar" id="field_solar"
+                    ng-model="vm.weatherEnergy.solar"
+                    required />
+            <div ng-show="editForm.solar.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.solar.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.solar.$error.number" data-translate="entity.validation.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="weatheropendataApp.weatherEnergy.hidraulic" for="field_hidraulic">Hidraulic</label>
+            <input type="number" class="form-control" name="hidraulic" id="field_hidraulic"
+                    ng-model="vm.weatherEnergy.hidraulic"
+                    required />
+            <div ng-show="editForm.hidraulic.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.hidraulic.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.hidraulic.$error.number" data-translate="entity.validation.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="weatheropendataApp.weatherEnergy.eolic" for="field_eolic">Eolic</label>
+            <input type="number" class="form-control" name="eolic" id="field_eolic"
+                    ng-model="vm.weatherEnergy.eolic"
+                    required />
+            <div ng-show="editForm.eolic.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.eolic.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.eolic.$error.number" data-translate="entity.validation.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="weatheropendataApp.weatherEnergy.createdDateTime" for="field_createdDateTime">Created Date Time</label>
+                <div class="input-group">
+                    <input id="field_createdDateTime" type="text" class="form-control" name="createdDateTime" uib-datepicker-popup="{{dateformat}}" ng-model="vm.weatherEnergy.createdDateTime" is-open="vm.datePickerOpenStatus.createdDateTime"
+                    required/>
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('createdDateTime')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+            <div ng-show="editForm.createdDateTime.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.createdDateTime.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

@@ -1,0 +1,51 @@
+
+<div>
+    <h2><span data-translate="weatheropendataApp.weatherEnergy.detail.title">Weather Energy</span> {{vm.weatherEnergy.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="weatheropendataApp.weatherEnergy.name">Name</span></dt>
+        <dd>
+            <span>{{vm.weatherEnergy.name}}</span>
+        </dd>
+        <dt><span data-translate="weatheropendataApp.weatherEnergy.isoCode">Iso Code</span></dt>
+        <dd>
+            <span>{{vm.weatherEnergy.isoCode}}</span>
+        </dd>
+        <dt><span data-translate="weatheropendataApp.weatherEnergy.lat">Lat</span></dt>
+        <dd>
+            <span>{{vm.weatherEnergy.lat}}</span>
+        </dd>
+        <dt><span data-translate="weatheropendataApp.weatherEnergy.lon">Lon</span></dt>
+        <dd>
+            <span>{{vm.weatherEnergy.lon}}</span>
+        </dd>
+        <dt><span data-translate="weatheropendataApp.weatherEnergy.solar">Solar</span></dt>
+        <dd>
+            <span>{{vm.weatherEnergy.solar}}</span>
+        </dd>
+        <dt><span data-translate="weatheropendataApp.weatherEnergy.hidraulic">Hidraulic</span></dt>
+        <dd>
+            <span>{{vm.weatherEnergy.hidraulic}}</span>
+        </dd>
+        <dt><span data-translate="weatheropendataApp.weatherEnergy.eolic">Eolic</span></dt>
+        <dd>
+            <span>{{vm.weatherEnergy.eolic}}</span>
+        </dd>
+        <dt><span data-translate="weatheropendataApp.weatherEnergy.createdDateTime">Created Date Time</span></dt>
+        <dd>
+            <span>{{vm.weatherEnergy.createdDateTime | date:'mediumDate'}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="weather-energy-detail.edit({id:vm.weatherEnergy.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

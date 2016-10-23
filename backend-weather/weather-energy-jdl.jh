@@ -1,0 +1,19 @@
+
+
+entity WeatherEnergy {	
+	name String,
+isoCode String,
+    lat Double,
+    lon Double,
+	solar Double required,
+    hidraulic Double required,
+    eolic Double required,
+    createdDateTime LocalDate required  
+}
+
+
+// Set pagination options
+paginate * with pager
+dto * with mapstruct
+// Set service options to all except few
+service all with serviceImpl

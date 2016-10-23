@@ -1,0 +1,29 @@
+{
+    "weatheropendataApp": {
+        "weatherEnergy" : {
+            "home": {
+                "title": "WeatherEnergies",
+                "createLabel": "Crear novo Weather Energy",
+                "createOrEditLabel": "Crear ou editar Weather Energy",
+                "search": "Search for Weather Energy"
+            },
+            "created": "Un novo Weather Energy foi creado co identificador {{ param }}",
+            "updated": "Un Weather Energy foi actualizado co identificador {{ param }}",
+            "deleted": "Un Weather Energy foi eliminado co identificador {{ param }}",
+            "delete": {
+                "question": "Seguro que desexa eliminar Weather Energy {{ id }}?"
+            },
+            "detail": {
+                "title": "Weather Energy"
+            },
+            "name": "Name",
+            "isoCode": "Iso Code",
+            "lat": "Lat",
+            "lon": "Lon",
+            "solar": "Solar",
+            "hidraulic": "Hidraulic",
+            "eolic": "Eolic",
+            "createdDateTime": "Created Date Time"
+        }
+    }
+}

@@ -1,0 +1,37 @@
+
+
+entity Weather {
+	lon Double required,
+    lat Double required,
+    city String required,
+    weatherMain String required,
+    weatherDescription String required,
+    weatherIcon String required,
+    base String,
+    mainTemp Double required,
+    mainPressure Double required,
+    mainHumidity Double required,
+    mainTempMin Double required,
+    mainTempMax Double required,
+    mainSeaLevel Double required,
+    mainGroundLevel Double required,
+    windSpeed Double required,
+    windDeg Double required,
+    rain3h Double required,
+    cloudsAll Integer required,
+    dt Integer
+    sysMessage Double,
+    sysCountry String required,
+    sysSunriseAsTimestamp Integer required,
+    sysSunsetAsTimestamp Integer required,
+	sysSunrise ZonedDateTime required,
+    sysSunset ZonedDateTime required,    
+    id Integer,
+    cod Integer
+}
+
+// Set pagination options
+paginate * with pager
+dto * with mapstruct
+// Set service options to all except few
+service all with serviceImpl

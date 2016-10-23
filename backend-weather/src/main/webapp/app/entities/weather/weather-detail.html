@@ -1,0 +1,123 @@
+
+<div>
+    <h2><span data-translate="weatheropendataApp.weather.detail.title">Weather</span> {{vm.weather.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="weatheropendataApp.weather.lon">Lon</span></dt>
+        <dd>
+            <span>{{vm.weather.lon}}</span>
+        </dd>
+        <dt><span data-translate="weatheropendataApp.weather.lat">Lat</span></dt>
+        <dd>
+            <span>{{vm.weather.lat}}</span>
+        </dd>
+        <dt><span data-translate="weatheropendataApp.weather.city">City</span></dt>
+        <dd>
+            <span>{{vm.weather.city}}</span>
+        </dd>
+        <dt><span data-translate="weatheropendataApp.weather.weatherMain">Weather Main</span></dt>
+        <dd>
+            <span>{{vm.weather.weatherMain}}</span>
+        </dd>
+        <dt><span data-translate="weatheropendataApp.weather.weatherDescription">Weather Description</span></dt>
+        <dd>
+            <span>{{vm.weather.weatherDescription}}</span>
+        </dd>
+        <dt><span data-translate="weatheropendataApp.weather.weatherIcon">Weather Icon</span></dt>
+        <dd>
+            <span>{{vm.weather.weatherIcon}}</span>
+        </dd>
+        <dt><span data-translate="weatheropendataApp.weather.base">Base</span></dt>
+        <dd>
+            <span>{{vm.weather.base}}</span>
+        </dd>
+        <dt><span data-translate="weatheropendataApp.weather.mainTemp">Main Temp</span></dt>
+        <dd>
+            <span>{{vm.weather.mainTemp}}</span>
+        </dd>
+        <dt><span data-translate="weatheropendataApp.weather.mainPressure">Main Pressure</span></dt>
+        <dd>
+            <span>{{vm.weather.mainPressure}}</span>
+        </dd>
+        <dt><span data-translate="weatheropendataApp.weather.mainHumidity">Main Humidity</span></dt>
+        <dd>
+            <span>{{vm.weather.mainHumidity}}</span>
+        </dd>
+        <dt><span data-translate="weatheropendataApp.weather.mainTempMin">Main Temp Min</span></dt>
+        <dd>
+            <span>{{vm.weather.mainTempMin}}</span>
+        </dd>
+        <dt><span data-translate="weatheropendataApp.weather.mainTempMax">Main Temp Max</span></dt>
+        <dd>
+            <span>{{vm.weather.mainTempMax}}</span>
+        </dd>
+        <dt><span data-translate="weatheropendataApp.weather.mainSeaLevel">Main Sea Level</span></dt>
+        <dd>
+            <span>{{vm.weather.mainSeaLevel}}</span>
+        </dd>
+        <dt><span data-translate="weatheropendataApp.weather.mainGroundLevel">Main Ground Level</span></dt>
+        <dd>
+            <span>{{vm.weather.mainGroundLevel}}</span>
+        </dd>
+        <dt><span data-translate="weatheropendataApp.weather.windSpeed">Wind Speed</span></dt>
+        <dd>
+            <span>{{vm.weather.windSpeed}}</span>
+        </dd>
+        <dt><span data-translate="weatheropendataApp.weather.windDeg">Wind Deg</span></dt>
+        <dd>
+            <span>{{vm.weather.windDeg}}</span>
+        </dd>
+        <dt><span data-translate="weatheropendataApp.weather.rain3H">Rain 3 H</span></dt>
+        <dd>
+            <span>{{vm.weather.rain3H}}</span>
+        </dd>
+        <dt><span data-translate="weatheropendataApp.weather.cloudsAll">Clouds All</span></dt>
+        <dd>
+            <span>{{vm.weather.cloudsAll}}</span>
+        </dd>
+        <dt><span data-translate="weatheropendataApp.weather.dt">Dt</span></dt>
+        <dd>
+            <span>{{vm.weather.dt}}</span>
+        </dd>
+        <dt><span data-translate="weatheropendataApp.weather.sysMessage">Sys Message</span></dt>
+        <dd>
+            <span>{{vm.weather.sysMessage}}</span>
+        </dd>
+        <dt><span data-translate="weatheropendataApp.weather.sysCountry">Sys Country</span></dt>
+        <dd>
+            <span>{{vm.weather.sysCountry}}</span>
+        </dd>
+        <dt><span data-translate="weatheropendataApp.weather.sysSunriseAsTimestamp">Sys Sunrise As Timestamp</span></dt>
+        <dd>
+            <span>{{vm.weather.sysSunriseAsTimestamp}}</span>
+        </dd>
+        <dt><span data-translate="weatheropendataApp.weather.sysSunsetAsTimestamp">Sys Sunset As Timestamp</span></dt>
+        <dd>
+            <span>{{vm.weather.sysSunsetAsTimestamp}}</span>
+        </dd>
+        <dt><span data-translate="weatheropendataApp.weather.sysSunrise">Sys Sunrise</span></dt>
+        <dd>
+            <span>{{vm.weather.sysSunrise | date:'medium'}}</span>
+        </dd>
+        <dt><span data-translate="weatheropendataApp.weather.sysSunset">Sys Sunset</span></dt>
+        <dd>
+            <span>{{vm.weather.sysSunset | date:'medium'}}</span>
+        </dd>
+        <dt><span data-translate="weatheropendataApp.weather.cod">Cod</span></dt>
+        <dd>
+            <span>{{vm.weather.cod}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="weather-detail.edit({id:vm.weather.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

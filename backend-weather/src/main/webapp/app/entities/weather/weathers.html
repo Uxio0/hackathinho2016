@@ -1,0 +1,110 @@
+<div>
+    <h2 data-translate="weatheropendataApp.weather.home.title">Weathers</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="weather.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span  data-translate="weatheropendataApp.weather.home.createLabel">
+                        Create new Weather
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                    <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="lon"><span data-translate="weatheropendataApp.weather.lon">Lon</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="lat"><span data-translate="weatheropendataApp.weather.lat">Lat</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="city"><span data-translate="weatheropendataApp.weather.city">City</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="weatherMain"><span data-translate="weatheropendataApp.weather.weatherMain">Weather Main</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="weatherDescription"><span data-translate="weatheropendataApp.weather.weatherDescription">Weather Description</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="weatherIcon"><span data-translate="weatheropendataApp.weather.weatherIcon">Weather Icon</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="base"><span data-translate="weatheropendataApp.weather.base">Base</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="mainTemp"><span data-translate="weatheropendataApp.weather.mainTemp">Main Temp</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="mainPressure"><span data-translate="weatheropendataApp.weather.mainPressure">Main Pressure</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="mainHumidity"><span data-translate="weatheropendataApp.weather.mainHumidity">Main Humidity</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="mainTempMin"><span data-translate="weatheropendataApp.weather.mainTempMin">Main Temp Min</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="mainTempMax"><span data-translate="weatheropendataApp.weather.mainTempMax">Main Temp Max</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="mainSeaLevel"><span data-translate="weatheropendataApp.weather.mainSeaLevel">Main Sea Level</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="mainGroundLevel"><span data-translate="weatheropendataApp.weather.mainGroundLevel">Main Ground Level</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="windSpeed"><span data-translate="weatheropendataApp.weather.windSpeed">Wind Speed</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="windDeg"><span data-translate="weatheropendataApp.weather.windDeg">Wind Deg</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="rain3H"><span data-translate="weatheropendataApp.weather.rain3H">Rain 3 H</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="cloudsAll"><span data-translate="weatheropendataApp.weather.cloudsAll">Clouds All</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="dt"><span data-translate="weatheropendataApp.weather.dt">Dt</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="sysMessage"><span data-translate="weatheropendataApp.weather.sysMessage">Sys Message</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="sysCountry"><span data-translate="weatheropendataApp.weather.sysCountry">Sys Country</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="sysSunriseAsTimestamp"><span data-translate="weatheropendataApp.weather.sysSunriseAsTimestamp">Sys Sunrise As Timestamp</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="sysSunsetAsTimestamp"><span data-translate="weatheropendataApp.weather.sysSunsetAsTimestamp">Sys Sunset As Timestamp</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="sysSunrise"><span data-translate="weatheropendataApp.weather.sysSunrise">Sys Sunrise</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="sysSunset"><span data-translate="weatheropendataApp.weather.sysSunset">Sys Sunset</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="cod"><span data-translate="weatheropendataApp.weather.cod">Cod</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="weather in vm.weathers track by weather.id">
+                    <td><a ui-sref="weather-detail({id:weather.id})">{{weather.id}}</a></td>
+                    <td>{{weather.lon}}</td>
+                    <td>{{weather.lat}}</td>
+                    <td>{{weather.city}}</td>
+                    <td>{{weather.weatherMain}}</td>
+                    <td>{{weather.weatherDescription}}</td>
+                    <td>{{weather.weatherIcon}}</td>
+                    <td>{{weather.base}}</td>
+                    <td>{{weather.mainTemp}}</td>
+                    <td>{{weather.mainPressure}}</td>
+                    <td>{{weather.mainHumidity}}</td>
+                    <td>{{weather.mainTempMin}}</td>
+                    <td>{{weather.mainTempMax}}</td>
+                    <td>{{weather.mainSeaLevel}}</td>
+                    <td>{{weather.mainGroundLevel}}</td>
+                    <td>{{weather.windSpeed}}</td>
+                    <td>{{weather.windDeg}}</td>
+                    <td>{{weather.rain3H}}</td>
+                    <td>{{weather.cloudsAll}}</td>
+                    <td>{{weather.dt}}</td>
+                    <td>{{weather.sysMessage}}</td>
+                    <td>{{weather.sysCountry}}</td>
+                    <td>{{weather.sysSunriseAsTimestamp}}</td>
+                    <td>{{weather.sysSunsetAsTimestamp}}</td>
+                    <td>{{weather.sysSunrise | date:'medium'}}</td>
+                    <td>{{weather.sysSunset | date:'medium'}}</td>
+                    <td>{{weather.cod}}</td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="weather-detail({id:weather.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="weather.edit({id:weather.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="weather.delete({id:weather.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
+    </div>
+    <uib-pager total-items="vm.totalItems" ng-model="vm.page" ng-change="vm.transition()"></uib-pager>
+</div>

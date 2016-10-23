@@ -1,0 +1,47 @@
+{
+    "weatheropendataApp": {
+        "weather" : {
+            "home": {
+                "title": "Weathers",
+                "createLabel": "Crear novo Weather",
+                "createOrEditLabel": "Crear ou editar Weather",
+                "search": "Search for Weather"
+            },
+            "created": "Un novo Weather foi creado co identificador {{ param }}",
+            "updated": "Un Weather foi actualizado co identificador {{ param }}",
+            "deleted": "Un Weather foi eliminado co identificador {{ param }}",
+            "delete": {
+                "question": "Seguro que desexa eliminar Weather {{ id }}?"
+            },
+            "detail": {
+                "title": "Weather"
+            },
+            "lon": "Lon",
+            "lat": "Lat",
+            "city": "City",
+            "weatherMain": "Weather Main",
+            "weatherDescription": "Weather Description",
+            "weatherIcon": "Weather Icon",
+            "base": "Base",
+            "mainTemp": "Main Temp",
+            "mainPressure": "Main Pressure",
+            "mainHumidity": "Main Humidity",
+            "mainTempMin": "Main Temp Min",
+            "mainTempMax": "Main Temp Max",
+            "mainSeaLevel": "Main Sea Level",
+            "mainGroundLevel": "Main Ground Level",
+            "windSpeed": "Wind Speed",
+            "windDeg": "Wind Deg",
+            "rain3H": "Rain 3 H",
+            "cloudsAll": "Clouds All",
+            "dt": "Dt",
+            "sysMessage": "Sys Message",
+            "sysCountry": "Sys Country",
+            "sysSunriseAsTimestamp": "Sys Sunrise As Timestamp",
+            "sysSunsetAsTimestamp": "Sys Sunset As Timestamp",
+            "sysSunrise": "Sys Sunrise",
+            "sysSunset": "Sys Sunset",
+            "cod": "Cod"
+        }
+    }
+}

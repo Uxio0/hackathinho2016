@@ -1,0 +1,390 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myWeatherLabel" data-translate="weatheropendataApp.weather.home.createOrEditLabel">Create or edit a Weather</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.weather.id">
+            <label for="id" data-translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.weather.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="weatheropendataApp.weather.lon" for="field_lon">Lon</label>
+            <input type="number" class="form-control" name="lon" id="field_lon"
+                    ng-model="vm.weather.lon"
+                    required />
+            <div ng-show="editForm.lon.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.lon.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.lon.$error.number" data-translate="entity.validation.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="weatheropendataApp.weather.lat" for="field_lat">Lat</label>
+            <input type="number" class="form-control" name="lat" id="field_lat"
+                    ng-model="vm.weather.lat"
+                    required />
+            <div ng-show="editForm.lat.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.lat.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.lat.$error.number" data-translate="entity.validation.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="weatheropendataApp.weather.city" for="field_city">City</label>
+            <input type="text" class="form-control" name="city" id="field_city"
+                    ng-model="vm.weather.city"
+                    required />
+            <div ng-show="editForm.city.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.city.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="weatheropendataApp.weather.weatherMain" for="field_weatherMain">Weather Main</label>
+            <input type="text" class="form-control" name="weatherMain" id="field_weatherMain"
+                    ng-model="vm.weather.weatherMain"
+                    required />
+            <div ng-show="editForm.weatherMain.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.weatherMain.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="weatheropendataApp.weather.weatherDescription" for="field_weatherDescription">Weather Description</label>
+            <input type="text" class="form-control" name="weatherDescription" id="field_weatherDescription"
+                    ng-model="vm.weather.weatherDescription"
+                    required />
+            <div ng-show="editForm.weatherDescription.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.weatherDescription.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="weatheropendataApp.weather.weatherIcon" for="field_weatherIcon">Weather Icon</label>
+            <input type="text" class="form-control" name="weatherIcon" id="field_weatherIcon"
+                    ng-model="vm.weather.weatherIcon"
+                    required />
+            <div ng-show="editForm.weatherIcon.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.weatherIcon.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="weatheropendataApp.weather.base" for="field_base">Base</label>
+            <input type="text" class="form-control" name="base" id="field_base"
+                    ng-model="vm.weather.base"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="weatheropendataApp.weather.mainTemp" for="field_mainTemp">Main Temp</label>
+            <input type="number" class="form-control" name="mainTemp" id="field_mainTemp"
+                    ng-model="vm.weather.mainTemp"
+                    required />
+            <div ng-show="editForm.mainTemp.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.mainTemp.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.mainTemp.$error.number" data-translate="entity.validation.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="weatheropendataApp.weather.mainPressure" for="field_mainPressure">Main Pressure</label>
+            <input type="number" class="form-control" name="mainPressure" id="field_mainPressure"
+                    ng-model="vm.weather.mainPressure"
+                    required />
+            <div ng-show="editForm.mainPressure.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.mainPressure.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.mainPressure.$error.number" data-translate="entity.validation.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="weatheropendataApp.weather.mainHumidity" for="field_mainHumidity">Main Humidity</label>
+            <input type="number" class="form-control" name="mainHumidity" id="field_mainHumidity"
+                    ng-model="vm.weather.mainHumidity"
+                    required />
+            <div ng-show="editForm.mainHumidity.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.mainHumidity.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.mainHumidity.$error.number" data-translate="entity.validation.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="weatheropendataApp.weather.mainTempMin" for="field_mainTempMin">Main Temp Min</label>
+            <input type="number" class="form-control" name="mainTempMin" id="field_mainTempMin"
+                    ng-model="vm.weather.mainTempMin"
+                    required />
+            <div ng-show="editForm.mainTempMin.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.mainTempMin.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.mainTempMin.$error.number" data-translate="entity.validation.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="weatheropendataApp.weather.mainTempMax" for="field_mainTempMax">Main Temp Max</label>
+            <input type="number" class="form-control" name="mainTempMax" id="field_mainTempMax"
+                    ng-model="vm.weather.mainTempMax"
+                    required />
+            <div ng-show="editForm.mainTempMax.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.mainTempMax.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.mainTempMax.$error.number" data-translate="entity.validation.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="weatheropendataApp.weather.mainSeaLevel" for="field_mainSeaLevel">Main Sea Level</label>
+            <input type="number" class="form-control" name="mainSeaLevel" id="field_mainSeaLevel"
+                    ng-model="vm.weather.mainSeaLevel"
+                    required />
+            <div ng-show="editForm.mainSeaLevel.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.mainSeaLevel.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.mainSeaLevel.$error.number" data-translate="entity.validation.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="weatheropendataApp.weather.mainGroundLevel" for="field_mainGroundLevel">Main Ground Level</label>
+            <input type="number" class="form-control" name="mainGroundLevel" id="field_mainGroundLevel"
+                    ng-model="vm.weather.mainGroundLevel"
+                    required />
+            <div ng-show="editForm.mainGroundLevel.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.mainGroundLevel.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.mainGroundLevel.$error.number" data-translate="entity.validation.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="weatheropendataApp.weather.windSpeed" for="field_windSpeed">Wind Speed</label>
+            <input type="number" class="form-control" name="windSpeed" id="field_windSpeed"
+                    ng-model="vm.weather.windSpeed"
+                    required />
+            <div ng-show="editForm.windSpeed.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.windSpeed.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.windSpeed.$error.number" data-translate="entity.validation.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="weatheropendataApp.weather.windDeg" for="field_windDeg">Wind Deg</label>
+            <input type="number" class="form-control" name="windDeg" id="field_windDeg"
+                    ng-model="vm.weather.windDeg"
+                    required />
+            <div ng-show="editForm.windDeg.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.windDeg.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.windDeg.$error.number" data-translate="entity.validation.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="weatheropendataApp.weather.rain3H" for="field_rain3H">Rain 3 H</label>
+            <input type="number" class="form-control" name="rain3H" id="field_rain3H"
+                    ng-model="vm.weather.rain3H"
+                    required />
+            <div ng-show="editForm.rain3H.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.rain3H.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.rain3H.$error.number" data-translate="entity.validation.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="weatheropendataApp.weather.cloudsAll" for="field_cloudsAll">Clouds All</label>
+            <input type="number" class="form-control" name="cloudsAll" id="field_cloudsAll"
+                    ng-model="vm.weather.cloudsAll"
+                    required />
+            <div ng-show="editForm.cloudsAll.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.cloudsAll.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.cloudsAll.$error.number" data-translate="entity.validation.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="weatheropendataApp.weather.dt" for="field_dt">Dt</label>
+            <input type="number" class="form-control" name="dt" id="field_dt"
+                    ng-model="vm.weather.dt"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="weatheropendataApp.weather.sysMessage" for="field_sysMessage">Sys Message</label>
+            <input type="number" class="form-control" name="sysMessage" id="field_sysMessage"
+                    ng-model="vm.weather.sysMessage"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="weatheropendataApp.weather.sysCountry" for="field_sysCountry">Sys Country</label>
+            <input type="text" class="form-control" name="sysCountry" id="field_sysCountry"
+                    ng-model="vm.weather.sysCountry"
+                    required />
+            <div ng-show="editForm.sysCountry.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.sysCountry.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="weatheropendataApp.weather.sysSunriseAsTimestamp" for="field_sysSunriseAsTimestamp">Sys Sunrise As Timestamp</label>
+            <input type="number" class="form-control" name="sysSunriseAsTimestamp" id="field_sysSunriseAsTimestamp"
+                    ng-model="vm.weather.sysSunriseAsTimestamp"
+                    required />
+            <div ng-show="editForm.sysSunriseAsTimestamp.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.sysSunriseAsTimestamp.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.sysSunriseAsTimestamp.$error.number" data-translate="entity.validation.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="weatheropendataApp.weather.sysSunsetAsTimestamp" for="field_sysSunsetAsTimestamp">Sys Sunset As Timestamp</label>
+            <input type="number" class="form-control" name="sysSunsetAsTimestamp" id="field_sysSunsetAsTimestamp"
+                    ng-model="vm.weather.sysSunsetAsTimestamp"
+                    required />
+            <div ng-show="editForm.sysSunsetAsTimestamp.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.sysSunsetAsTimestamp.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.sysSunsetAsTimestamp.$error.number" data-translate="entity.validation.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="weatheropendataApp.weather.sysSunrise" for="field_sysSunrise">Sys Sunrise</label>
+                <div class="input-group">
+                    <input id="field_sysSunrise" type="text" class="form-control" name="sysSunrise" datetime-picker="{{dateformat}}" ng-model="vm.weather.sysSunrise" is-open="vm.datePickerOpenStatus.sysSunrise"
+                    required  />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('sysSunrise')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+            <div ng-show="editForm.sysSunrise.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.sysSunrise.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.sysSunrise.$error.ZonedDateTimelocal" data-translate="entity.validation.ZonedDateTimelocal">
+                    This field should be a date and time.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="weatheropendataApp.weather.sysSunset" for="field_sysSunset">Sys Sunset</label>
+                <div class="input-group">
+                    <input id="field_sysSunset" type="text" class="form-control" name="sysSunset" datetime-picker="{{dateformat}}" ng-model="vm.weather.sysSunset" is-open="vm.datePickerOpenStatus.sysSunset"
+                    required  />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('sysSunset')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+            <div ng-show="editForm.sysSunset.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.sysSunset.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.sysSunset.$error.ZonedDateTimelocal" data-translate="entity.validation.ZonedDateTimelocal">
+                    This field should be a date and time.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="weatheropendataApp.weather.cod" for="field_cod">Cod</label>
+            <input type="number" class="form-control" name="cod" id="field_cod"
+                    ng-model="vm.weather.cod"
+                     />
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

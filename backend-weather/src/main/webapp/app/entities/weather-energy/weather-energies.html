@@ -1,0 +1,74 @@
+<div>
+    <h2 data-translate="weatheropendataApp.weatherEnergy.home.title">Weather Energies</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="weather-energy.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span  data-translate="weatheropendataApp.weatherEnergy.home.createLabel">
+                        Create new Weather Energy
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                    <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="name"><span data-translate="weatheropendataApp.weatherEnergy.name">Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="isoCode"><span data-translate="weatheropendataApp.weatherEnergy.isoCode">Iso Code</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="lat"><span data-translate="weatheropendataApp.weatherEnergy.lat">Lat</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="lon"><span data-translate="weatheropendataApp.weatherEnergy.lon">Lon</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="solar"><span data-translate="weatheropendataApp.weatherEnergy.solar">Solar</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="hidraulic"><span data-translate="weatheropendataApp.weatherEnergy.hidraulic">Hidraulic</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="eolic"><span data-translate="weatheropendataApp.weatherEnergy.eolic">Eolic</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="createdDateTime"><span data-translate="weatheropendataApp.weatherEnergy.createdDateTime">Created Date Time</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="weatherEnergy in vm.weatherEnergies track by weatherEnergy.id">
+                    <td><a ui-sref="weather-energy-detail({id:weatherEnergy.id})">{{weatherEnergy.id}}</a></td>
+                    <td>{{weatherEnergy.name}}</td>
+                    <td>{{weatherEnergy.isoCode}}</td>
+                    <td>{{weatherEnergy.lat}}</td>
+                    <td>{{weatherEnergy.lon}}</td>
+                    <td>{{weatherEnergy.solar}}</td>
+                    <td>{{weatherEnergy.hidraulic}}</td>
+                    <td>{{weatherEnergy.eolic}}</td>
+                        <td>{{weatherEnergy.createdDateTime | date:'mediumDate'}}</td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="weather-energy-detail({id:weatherEnergy.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="weather-energy.edit({id:weatherEnergy.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="weather-energy.delete({id:weatherEnergy.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
+    </div>
+    <uib-pager total-items="vm.totalItems" ng-model="vm.page" ng-change="vm.transition()"></uib-pager>
+</div>
