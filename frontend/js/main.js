@@ -14,6 +14,7 @@
         var provinceIsoCode = App.fn.getProvinceIsoCode(province)
         if (provinceIsoCode){
           alert("Has seleccionado " + provinceIsoCode);
+          App.fn.selectProvinceInGraphics(provinceIsoCode)
         } else {
            alert("TODO: Falta mapear la provincia " + province.name + ' ('+province.number+')');
         }

@@ -97,18 +97,14 @@
       $("#"+settings.graphicsId).highcharts(graphicOptions);
     }
 
-    function selectProvince(settings){
-      var graphicOptions = getGraphicOptions()
-      $("#"+settings.graphicsId).highcharts(graphicOptions);
-    }
-
-    function selectProvince(isoCode){
-      aler('TODO: Select in graphics.js - '+isoCode)
+    function selectProvinceInGraphics(isoCode){
+      console.warn('TODO: Select in graphics.js - '+isoCode)
       // TODO: Impleemntar un filtro. Habria que relacionar el isoCode con el numero de provincia
     }
 
 
     ns.fn = ns.fn || {}
     ns.fn.loadGraphics = loadGraphics
-    ns.fn.selectProvince = selectProvince
+    ns.fn.selectProvinceInGraphics = selectProvinceInGraphics
+
 })(App);
