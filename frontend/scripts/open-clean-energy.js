@@ -11,20 +11,44 @@ $(function () {
   var solarEnergy = []
 
   var that = this
-  $.get(energy + 'eolic', function (data) {
-    that.eolicEnergy = data
-    that.configChart()
-    console.debug('eolic')
+  
+  $.ajax({
+     url: energy + 'eolic',
+     dataType: 'jsonp',
+     success: function(json) {
+      that.eolicEnergy = data
+      that.configChart()
+      console.debug('eolic')
+     },
+     error:function(){
+      console.error('No eolic energy metrics available')
+     }      
   })
-  $.get(energy + 'hydraulic', function (data) {
-    that.hydraulicEnergy = data
-    that.configChart()
-    console.debug('hydraulic')
+  
+  $.ajax({
+     url: energy + 'hydraulic',
+     dataType: 'jsonp',
+     success: function(json) {
+      that.eolicEnergy = data
+      that.configChart()
+      console.debug('hydraulic')
+     },
+     error:function(){
+      console.error('No hydraulic energy metrics available')
+     }      
   })
-  $.get(energy + 'solar', function (data) {
-    that.solarEnergy = data
-    that.configChart()
-    console.debug('solar')
+  
+  $.ajax({
+     url: energy + 'solar',
+     dataType: 'jsonp',
+     success: function(json) {
+      that.eolicEnergy = data
+      that.configChart()
+      console.debug('solar')
+     },
+     error:function(){
+      console.error('No solar energy metrics available')
+     }      
   })
 
   // Data
