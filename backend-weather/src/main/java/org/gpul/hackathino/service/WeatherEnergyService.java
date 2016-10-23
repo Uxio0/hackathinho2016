@@ -12,6 +12,8 @@ import java.io.IOException;
  */
 public interface WeatherEnergyService {
 
+    void downloadByProvinces();
+
     void download() throws JSONException, IOException;
 
     /**
