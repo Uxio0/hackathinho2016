@@ -61,6 +61,7 @@ public class WeatherEnergyServiceImpl implements WeatherEnergyService{
 
         List<WeatherEnergy> list = new ArrayList<>();
         JSONArray json = Localizations.getJson();
+        System.out.println(json.length());
         for (int i = 0; i < json.length(); i++) {
 
             String isoCode = json.getJSONObject(i).getString("isoCode");
@@ -75,6 +76,15 @@ public class WeatherEnergyServiceImpl implements WeatherEnergyService{
             weatherEnergy.setCreatedDateTime(LocalDate.now());
             weatherEnergy.setLat(lat);
             weatherEnergy.setLon(lon);
+
+            weatherEnergy.setRain(weather.getRain3H());
+            weatherEnergy.setClouds(new Double(weather.getCloudsAll()));
+            weatherEnergy.setMaxTemp(weather.getMainTempMax());
+            weatherEnergy.setMinTemp(weather.getMainTempMin());
+            weatherEnergy.setTemp(weather.getMainTemp());
+            weatherEnergy.setSunset(weather.getSysSunsetAsTimestamp());
+            weatherEnergy.setSunrise(weather.getSysSunriseAsTimestamp());
+            weatherEnergy.setWindSpeed(weather.getWindSpeed());
 
             /**
             hidraulic = rain3h * 8 * factor_hidraulica

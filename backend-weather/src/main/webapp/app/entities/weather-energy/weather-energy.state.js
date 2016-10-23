@@ -129,8 +129,16 @@
                                 lat: null,
                                 lon: null,
                                 solar: null,
+                                minTemp: null,
+                                maxTemp: null,
+                                temp: null,
+                                sunset: null,
+                                sunrise: null,
                                 hidraulic: null,
+                                rain: null,
                                 eolic: null,
+                                windSpeed: null,
+                                clouds: null,
                                 createdDateTime: null,
                                 id: null
                             };

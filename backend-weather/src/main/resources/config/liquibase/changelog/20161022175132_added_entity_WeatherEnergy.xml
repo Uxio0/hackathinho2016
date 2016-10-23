@@ -41,12 +41,44 @@
                 <constraints nullable="false" />
             </column>
             
+            <column name="min_temp" type="double">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="max_temp" type="double">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="temp" type="double">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="sunset" type="integer">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="sunrise" type="integer">
+                <constraints nullable="true" />
+            </column>
+            
             <column name="hidraulic" type="double">
                 <constraints nullable="false" />
             </column>
             
+            <column name="rain" type="double">
+                <constraints nullable="true" />
+            </column>
+            
             <column name="eolic" type="double">
                 <constraints nullable="false" />
+            </column>
+            
+            <column name="wind_speed" type="double">
+                <constraints nullable="true" />
+            </column>
+            
+            <column name="clouds" type="double">
+                <constraints nullable="true" />
             </column>
             
             <column name="created_date_time" type="date">
