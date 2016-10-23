@@ -13,7 +13,7 @@
             parent: 'entity',
             url: '/weather-energy?page&sort&search',
             data: {
-                authorities: ['ROLE_USER'],
+                authorities: [],
                 pageTitle: 'weatheropendataApp.weatherEnergy.home.title'
             },
             views: {
@@ -55,7 +55,7 @@
             parent: 'entity',
             url: '/weather-energy/{id}',
             data: {
-                authorities: ['ROLE_USER'],
+                authorities: [],
                 pageTitle: 'weatheropendataApp.weatherEnergy.detail.title'
             },
             views: {
