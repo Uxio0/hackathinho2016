@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Weather</title>
+        <meta charset="utf8">
+        <style type="text/css">
+          body {
+            background: #fff;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            text-align: center;
+            color: #555;
+          }
+          h1 {
+            font-size: 25px;
+            padding: 30px 0 10px;
+          }
+          p {
+            padding-bottom: 30px;
+          }
+          .agile img {
+            border: none;
+            margin-top: 10px;
+          }
+          .agile {
+            padding: 50px;
+            font-size: 15px;
+          }
+          a {
+            color: #66bbdd;
+            text-decoration: none;
+          }
+          a:hover {
+            text-decoration: underline;
+          }
+        </style>
+    </head>
+
+    <body>
+    <div id="map" />
+ 		<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+
+ 		<script
+			  src="https://code.jquery.com/jquery-1.12.4.min.js"
+			  integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+			  crossorigin="anonymous"></script>
+ 		<script src="http://code.highcharts.com/stock/highstock.js"></script>
+		<script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script type="text/javascript" src="map/lib/raphael-min.js"></script>
+    <script type="text/javascript" src="map/lib/spain-map.js"></script>
+    <script type="text/javascript">
+      var mapProvincesToIsoCode = {
+        36: 'ES-PO',
+        15: 'ES-C',
+        32: 'ES-OR',
+        27: 'ES-LU'
+        //TODO: completar usando spain-map.js + procinces.json
+      }
+      new SpainMap({
+        id: 'map',
+        width: 700,
+        height: 500,
+        fillColor: "#eeeeee",
+        strokeColor: "#cccccc",
+        strokeWidth: 0.7,
+        selectedColor: "#66bbdd",
+        animationDuration: 200,
+        onClick: function(province, event) {
+          alert("Has seleccionado " + mapProvincesToIsoCode[province.number]);
+        }
+        //onMouseOver: function(province, event) {
+        //  console.log('Navigating through ' + province.name);
+        //},
+        //onMouseOut: function(province, event) {
+        //  console.log('Leaving ' + province.name);
+        //}
+      });
+    </script>
+		<script src="graphics/bar_chart.js"></script>
+    </body>
+</html>
