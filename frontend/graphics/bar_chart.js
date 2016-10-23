@@ -26,7 +26,7 @@ $(function () {
             name: 'Eólica',
             color: 'Grey',
             data: []
-        }, 
+        },
         {
             type: 'spline',
             name: 'Est. solar',
@@ -65,16 +65,18 @@ $(function () {
     // Peticion de produccion real de energias
     // Peticion de produccion estimada de energias
 
+    // Ordenar de mayor producion real a menor
+
     // Cuando se tienen los datos anteriores, se incorporan al objeto de la siguiente manera:
 
     // Provincias
     options.xAxis.categories = ['Alava', 'Albacete', 'A Coruna', 'Sevilla', 'Badajoz', 'Alava', 'Albacete', 'A Coruna', 'Sevilla', 'Badajoz', 'Alava', 'Albacete', 'A Coruna', 'Sevilla', 'Badajoz', 'Alava', 'Albacete', 'A Coruna', 'Sevilla', 'Badajoz', 'Alava', 'Albacete', 'A Coruna', 'Sevilla', 'Badajoz', 'Alava', 'Albacete', 'A Coruna', 'Sevilla', 'Badajoz', 'Alava', 'Albacete', 'A Coruna', 'Sevilla', 'Badajoz', 'Alava', 'Albacete', 'A Coruna', 'Sevilla', 'Badajoz', 'Alava', 'Albacete', 'A Coruna', 'Sevilla', 'Badajoz']
- 
+
     // Datos SOLARES reales
     options.series[0].data = [3, 2, 1, 3, 4, 3, 2, 1, 3, 4, 3, 2, 1, 3, 4, 3, 2, 1, 3, 4, 3, 2, 1, 3, 4, 3, 2, 1, 3, 4, 3, 2, 1, 3, 4, 3, 2, 1, 3, 4, 3, 2, 1, 3, 4]
     // Datos HIDRAULICOS reales
     options.series[1].data = [2, 3, 5, 7, 6, 2, 3, 5, 7, 6, 2, 3, 5, 7, 6, 2, 3, 5, 7, 6, 2, 3, 5, 7, 6, 2, 3, 5, 7, 6, 2, 3, 5, 7, 6, 2, 3, 5, 7, 6, 2, 3, 5, 7, 6]
-    // Datos EOLICOS reales 
+    // Datos EOLICOS reales
     options.series[2].data = [4, 3, 3, 9, 2, 4, 3, 3, 9, 2, 4, 3, 3, 9, 2, 4, 3, 3, 9, 2, 4, 3, 3, 9, 2, 4, 3, 3, 9, 2, 4, 3, 3, 9, 2, 4, 3, 3, 9, 2, 4, 3, 3, 9, 2]
 
     // Datos SOLARES estimados
@@ -85,4 +87,3 @@ $(function () {
     options.series[5].data = [1, 5.67, 4, 4.33, 3.33, 1, 5.67, 4, 4.33, 3.33, 1, 5.67, 4, 4.33, 3.33, 1, 5.67, 4, 4.33, 3.33, 1, 5.67, 4, 4.33, 3.33, 1, 5.67, 4, 4.33, 3.33, 1, 5.67, 4, 4.33, 3.33, 1, 5.67, 4, 4.33, 3.33, 1, 5.67, 4, 4.33, 3.33]
     $('#container').highcharts(options);
 });
-

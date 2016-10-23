@@ -1,0 +1,21 @@
+
+.agile img {
+  border: none;
+  margin-top: 10px;
+}
+.agile {
+  padding: 50px;
+  font-size: 15px;
+}
+
+.wind{
+  background-color: grey;
+}
+
+.solar{
+  background-color: orange
+}
+
+.hydraulic{
+  background-color: rgb(149, 206, 255);
+}
