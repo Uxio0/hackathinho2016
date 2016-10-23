@@ -13,10 +13,10 @@
       onClickProvince: function(province, event) {
         var provinceIsoCode = App.fn.getProvinceIsoCode(province)
         if (provinceIsoCode){
-          alert("Has seleccionado " + provinceIsoCode);
+          alert("Selected " + provinceIsoCode);
           App.fn.selectProvinceInGraphics(provinceIsoCode)
         } else {
-           alert("TODO: Falta mapear la provincia " + province.name + ' ('+province.number+')');
+           alert("Pending to map province " + province.name + ' with id ('+province.number+')');
         }
 
       }

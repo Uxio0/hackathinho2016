@@ -3,7 +3,7 @@ $(function () {
   var that = this
   
   // Weather service
-  var weatherService = "http://localhost:8080/api/weather"
+  var weatherService = "http://10.20.25.86:8080/api/weather-energies"
   
   // Current weather
   
@@ -205,7 +205,7 @@ $(function () {
         data: [],
         marker: {
           lineWidth: 2,
-          lineColor: Highcharts.getenergyOptions().colors[3],
+          lineColor: Highcharts.getOptions().colors[3],
           fillColor: 'White'
         }
       },
@@ -216,7 +216,7 @@ $(function () {
         data: [],
         marker: {
           lineWidth: 2,
-          lineColor: Highcharts.getenergyOptions().colors[3],
+          lineColor: Highcharts.getOptions().colors[3],
           fillColor: 'White'
         }
       },
@@ -227,7 +227,7 @@ $(function () {
         data: [],
         marker: {
           lineWidth: 2,
-          lineColor: Highcharts.getenergyOptions().colors[3],
+          lineColor: Highcharts.getOptions().colors[3],
           fillColor: 'White'
         }
       }

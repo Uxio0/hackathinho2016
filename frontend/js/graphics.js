@@ -1,67 +1,71 @@
 (function (ns) {
     function getGraphicOptions(){
       var options = {
-          title: {
-              text: 'Producción energética'
-          },
-          xAxis: {
-              categories: [],
-              min: 0,
-              max:9
-          },
-          scrollbar: {
-              enabled: true
-          },
-          series: [{
-              type: 'column',
-              name: 'Solar',
-              color: 'Orange',
-              data: []
-          }, {
-              type: 'column',
-              name: 'Hidráulica',
-              color: '#95ceff',
-              data: []
-          }, {
-              type: 'column',
-              name: 'Eólica',
-              color: 'Grey',
-              data: []
-          },
-          {
-              type: 'spline',
-              name: 'Est. solar',
-              color: 'Orange',
-              data: [],
-              marker: {
-                  lineWidth: 2,
-                  lineColor: Highcharts.getOptions().colors[3],
-                  fillColor: 'white'
-              }
-          },
-          {
-              type: 'spline',
-              name: 'Est. Hidráulica',
-              color: '#95ceff',
-              data: [],
-              marker: {
-                  lineWidth: 2,
-                  lineColor: Highcharts.getOptions().colors[3],
-                  fillColor: 'white'
-              }
-          },
-          {
-              type: 'spline',
-              name: 'Est. Eólica',
-              color: 'Grey',
-              data: [],
-              marker: {
-                  lineWidth: 2,
-                  lineColor: Highcharts.getOptions().colors[3],
-                  fillColor: 'white'
-              }
-          }]
+    title: {
+      text: 'Energy production'
+    },
+    xAxis: {
+      categories: [],
+      min: 0,
+      max:9
+    },
+    scrollbar: {
+      enabled: true
+    },
+    series: [
+      {
+        type: 'column',
+        name: 'Eolic (MW)',
+        color: 'Grey',
+        data: []
+      },
+      {
+        type: 'column',
+        name: 'Hydraulic (MW)',
+        color: '#95ceff',
+        data: []
+      },
+      {
+        type: 'column',
+        name: 'Solar (MW)',
+        color: 'Orange',
+        data: []
+      },
+      {
+        type: 'spline',
+        name: 'Est. solar (MW)',
+        color: 'Orange',
+        data: [],
+        marker: {
+          lineWidth: 2,
+          lineColor: Highcharts.getOptions().colors[3],
+          fillColor: 'White'
+        }
+      },
+      {
+        type: 'spline',
+        name: 'Est. hydraulic (MW)',
+        color: '#95ceff',
+        data: [],
+        marker: {
+          lineWidth: 2,
+          lineColor: Highcharts.getOptions().colors[3],
+          fillColor: 'White'
+        }
+      },
+      {
+        type: 'spline',
+        name: 'Est. eolic (MW)',
+        color: 'Grey',
+        data: [],
+        marker: {
+          lineWidth: 2,
+          lineColor: Highcharts.getOptions().colors[3],
+          fillColor: 'White'
+        }
       }
+    ]
+  }
 
       // Peticion de produccion real de energias
       // Peticion de produccion estimada de energias
@@ -71,21 +75,32 @@
       // Cuando se tienen los datos anteriores, se incorporan al objeto de la siguiente manera:
 
       // Provincias
-      options.xAxis.categories = ['Alava', 'Albacete', 'A Coruna', 'Sevilla', 'Badajoz', 'Alava', 'Albacete', 'A Coruna', 'Sevilla', 'Badajoz', 'Alava', 'Albacete', 'A Coruna', 'Sevilla', 'Badajoz', 'Alava', 'Albacete', 'A Coruna', 'Sevilla', 'Badajoz', 'Alava', 'Albacete', 'A Coruna', 'Sevilla', 'Badajoz', 'Alava', 'Albacete', 'A Coruna', 'Sevilla', 'Badajoz', 'Alava', 'Albacete', 'A Coruna', 'Sevilla', 'Badajoz', 'Alava', 'Albacete', 'A Coruna', 'Sevilla', 'Badajoz', 'Alava', 'Albacete', 'A Coruna', 'Sevilla', 'Badajoz']
+      var provinces = ['A Coruña', 'Vitoria', 'Albacete', 'Alicante', 'Almeria',
+                'Asturias', 'Avila', 'Badajoz',
+                'Palma de Mallorca', 'Barcelona', 'Bilbao', 'Burgos', 'Caceres', 'Cadiz',
+                'Cantabria', 'Castellon', 'Ciudad Real', 'Cordoba', 'Cuenca', 'San Sebastian',
+                'Girona', 'Granada', 'Guadalajara', 'Huelva', 'Huesca', 'Jaen', 'La Rioja',
+                'Las Palmas', 'Leon', 'Lleida', 'Lugo', 'Madrid', 'Malaga',
+                'Murcia', 'Navarra', 'Ourense', 'Palencia',
+                'Pontevedra', 'Salamanca', 'Santa Cruz de Tenerife', 'Segovia', 'Sevilla',
+                'Soria', 'Tarragona', 'Teruel', 'Toledo', 'Valencia', 'Valladolid', 'Zamora', 'Zaragoza']
+      options.xAxis.categories = provinces
 
-      // Datos SOLARES reales
-      options.series[0].data = [3, 2, 1, 3, 4, 3, 2, 1, 3, 4, 3, 2, 1, 3, 4, 3, 2, 1, 3, 4, 3, 2, 1, 3, 4, 3, 2, 1, 3, 4, 3, 2, 1, 3, 4, 3, 2, 1, 3, 4, 3, 2, 1, 3, 4]
-      // Datos HIDRAULICOS reales
-      options.series[1].data = [2, 3, 5, 7, 6, 2, 3, 5, 7, 6, 2, 3, 5, 7, 6, 2, 3, 5, 7, 6, 2, 3, 5, 7, 6, 2, 3, 5, 7, 6, 2, 3, 5, 7, 6, 2, 3, 5, 7, 6, 2, 3, 5, 7, 6]
-      // Datos EOLICOS reales
-      options.series[2].data = [4, 3, 3, 9, 2, 4, 3, 3, 9, 2, 4, 3, 3, 9, 2, 4, 3, 3, 9, 2, 4, 3, 3, 9, 2, 4, 3, 3, 9, 2, 4, 3, 3, 9, 2, 4, 3, 3, 9, 2, 4, 3, 3, 9, 2]
+      // Real data (eolic, hydraulic, solar)
+      options.series[0].data = []
+      options.series[1].data = []
+      options.series[2].data = []
+      
+      for (var i = 0; i < provinces.length; i++) {
+        options.series[0].data.push(Math.random() * 200)
+        options.series[1].data.push(Math.random() * 400)
+        options.series[2].data.push(Math.random() * 100)
+      }
 
-      // Datos SOLARES estimados
-      options.series[3].data = [2, 1, 2,2, 2.67, 3, 6.33, 3.33, 2,2, 2.67, 3, 6.33, 3.33, 2,2, 2.67, 3, 6.33, 3.33, 2,2, 2.67, 3, 6.33, 3.33, 2,2, 2.67, 3, 6.33, 3.33, 2,2, 2.67, 3, 6.33, 3.33, 2,2, 2.67, 3, 6.33, 3.33, 2]
-      // Datos HIDRAULICOS estimados
-      options.series[4].data = [4, 3.67, 1, 2.33, 6.33, 4, 3.67, 1, 2.33, 6.33,4, 3.67, 1, 2.33, 6.33,4, 3.67, 1, 2.33, 6.33,4, 3.67, 1, 2.33, 6.33,4, 3.67, 1, 2.33, 6.33,4, 3.67, 1, 2.33, 6.33,4, 3.67, 1, 2.33, 6.33,4, 3.67, 1, 2.33, 6.33]
-      // Datos EOLICOS estimados
-      options.series[5].data = [1, 5.67, 4, 4.33, 3.33, 1, 5.67, 4, 4.33, 3.33, 1, 5.67, 4, 4.33, 3.33, 1, 5.67, 4, 4.33, 3.33, 1, 5.67, 4, 4.33, 3.33, 1, 5.67, 4, 4.33, 3.33, 1, 5.67, 4, 4.33, 3.33, 1, 5.67, 4, 4.33, 3.33, 1, 5.67, 4, 4.33, 3.33]
+      // Estimated data (eolic, hydraulic, solar)
+      options.series[3].data = options.series[0].data.map(value => value * (1 + Math.random()))
+      options.series[4].data = options.series[1].data.map(value => value * (1 + Math.random()))
+      options.series[5].data = options.series[2].data.map(value => value * (1 + Math.random()))
 
       return options
     }
@@ -94,7 +109,7 @@
 
     function loadGraphics(settings){
       var graphicOptions = getGraphicOptions()
-      $("#"+settings.graphicsId).highcharts(graphicOptions);
+      $('#'+settings.graphicsId).highcharts(graphicOptions);
     }
 
     function selectProvinceInGraphics(isoCode){
