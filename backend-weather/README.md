@@ -1,12 +1,24 @@
 # weatheropendata
 
-This application was generated using JHipster 3.9.1, you can find documentation and help at [https://jhipster.github.io/documentation-archive/v3.9.1](https://jhipster.github.io/documentation-archive/v3.9.1).
+## Requirements
+
+- Java 8
+- Node 6.3.0
+- PostgreSQL 9.3
+
+## Local Configuration
+
+```
+$ npm install
+$ psql
+postgres=# CREATE USER weatheropendata with password 'DO NOT USER BAD PASSWORDS';
+postgres=# create database weatheropendata owner weatheropendata;
+postgres=# grant all privileges on database weatheropendata to weatheropendata;
+$ mvn compile
+$ mvn spring-boot:run
+```
 
 ## Development
-
-Before you can build this project, you must install and configure the following dependencies on your machine:
-1. [Node.js][]: We use Node to run a development web server and build the project.
-   Depending on your system, you can install Node either from source or as a pre-packaged bundle.
 
 After installing Node, you should be able to run the following command to install development tools (like
 [Bower][] and [BrowserSync][]). You will only need to run this command when dependencies change in package.json.
@@ -42,8 +54,6 @@ To ensure everything worked, run:
 
 Then navigate to [http://localhost:8080](http://localhost:8080) in your browser.
 
-Refer to [Using JHipster in production][] for more details.
-
 ## Testing
 
 To launch your application's tests, run:
@@ -55,12 +65,6 @@ To launch your application's tests, run:
 Unit tests are run by [Karma][] and written with [Jasmine][]. They're located in `src/test/javascript/` and can be run with:
 
     gulp test
-
-
-
-For more information, refer to the [Running tests page][].
-
-## Using Docker to simplify development (optional)
 
 You can use Docker to improve your JHipster development experience. A number of docker-compose configuration are available in the `src/main/docker` folder to launch required third party services.
 For example, to start a postgresql database in a docker container, run:
@@ -82,24 +86,3 @@ Then run:
 
 For more information refer to [Using Docker and Docker-Compose][], this page also contains information on the docker-compose sub-generator (`yo jhipster:docker-compose`), which is able to generate docker configurations for one or several JHipster applications.
 
-## Continuous Integration (optional)
-
-To set up a CI environment, consult the [Setting up Continuous Integration][] page.
-
-[JHipster Homepage and latest documentation]: https://jhipster.github.io
-[JHipster 3.9.1 archive]: https://jhipster.github.io/documentation-archive/v3.9.1
-
-[Using JHipster in development]: https://jhipster.github.io/documentation-archive/v3.9.1/development/
-[Using Docker and Docker-Compose]: https://jhipster.github.io/documentation-archive/v3.9.1/docker-compose
-[Using JHipster in production]: https://jhipster.github.io/documentation-archive/v3.9.1/production/
-[Running tests page]: https://jhipster.github.io/documentation-archive/v3.9.1/running-tests/
-[Setting up Continuous Integration]: https://jhipster.github.io/documentation-archive/v3.9.1/setting-up-ci/
-
-
-[Node.js]: https://nodejs.org/
-[Bower]: http://bower.io/
-[Gulp]: http://gulpjs.com/
-[BrowserSync]: http://www.browsersync.io/
-[Karma]: http://karma-runner.github.io/
-[Jasmine]: http://jasmine.github.io/2.0/introduction.html
-[Protractor]: https://angular.github.io/protractor/
